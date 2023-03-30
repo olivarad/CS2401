@@ -10,6 +10,7 @@ void main_menu();
 void product_menu();
 
 int main(){
+    list<product*> product_list;
     //ifstream fin;
     //fin.open("backup.txt");
 
