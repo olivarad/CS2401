@@ -6,8 +6,8 @@
 class product{
     public:
         double cost(); // Outputs cost
-        virtual void output(); // Outputs data
-        virtual void input(); // Product selection
+        virtual void output() const = 0; // Outputs data
+        virtual void input() const = 0; // Product selection
     private:
         double cost_per; // Cost per item
 };

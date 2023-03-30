@@ -7,6 +7,35 @@ void shirt::input(){
 void shirt::output(){
     
 }
-int main(){
-    return 0;
+
+void skirt::input(){
+
+}
+
+void skirt::output(){
+    
+}
+
+void heel::input(){
+
+}
+
+void heel::output(){
+    
+}
+
+void ears::input(){
+
+}
+
+void ears::output(){
+    
+}
+
+void knife::input(){
+
+}
+
+void knife::output(){
+    
 }
