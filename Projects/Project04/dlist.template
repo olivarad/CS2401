@@ -1,0 +1,198 @@
+#include <iostream>
+#include <string>
+
+template <class T> 
+dlist<T>::dlist(dnode<T>* h, dnode<T>* t){
+    head = h;
+    tail = t;
+    list_size = 0;
+}
+
+template <class T> 
+dlist<T>::~dlist(){
+    while (head != NULL){
+        tail = head; // Sets the tail pointer to keep track of the node at head before we advance head
+        head = head -> next(); // Advances head
+        delete tail; // delete node before the advanced head
+    }
+    tail = head; // reset tail to NULL
+}
+
+template <class T> 
+dlist<T>::dlist(const dlist<T>& other){ // Copy Constructor
+    if(other.head == NULL){ // Empty list
+        list_size = 0; // Sets the list_size
+        return; // returns a default list
+    }
+	else{
+		head = tail = new dnode<T>(other.head -> data()); // Sets the head of the copied list
+		for (dnode<T>* cursor = other.head -> next(); cursor != NULL; cursor = cursor -> next()){ // Itterates through the other list
+			tail -> set_next(new dnode<T>(cursor -> data(), tail, NULL)); // Makes a new node and sets the data field to the passed int, previous to tail, but n to null
+			tail = tail -> next(); // Makes the new node the end of the list
+		}
+        list_size = other.list_size; // Sets size
+        return;
+	}
+}
+
+template <class T>
+void dlist<T>::operator = (const dlist<T>& other){ // Assignment operator
+    if (head == other.head){ // Check for self assignment
+        return; // Returns without changing the list
+    }
+    else{
+        for (dnode<T>* temp = head; head != NULL; temp = head){ // Advances through the list to be deallocated so a new one can be made "in its place"
+            head = head -> next(); // Advances the head pointer
+            delete temp; // Deallocates data stored in the old head
+        }
+        if (other.head == NULL){ // Empty list
+            head = tail = NULL;
+            list_size = 0; // Sets size
+            return; 
+        }
+        else{
+            head = tail = new dnode<T>(other.head -> data()); // Sets the head of the copied list
+		    for (dnode<T>* cursor = other.head -> next(); cursor != NULL; cursor = cursor -> next()){ // Itterates through the other list
+			    tail -> set_next(new dnode<T>(cursor -> data(), tail, NULL)); // Makes a new node and sets the data field to the passed int, previous to tail, but n to null
+			    tail = tail -> next(); // Makes the new node the end of the list
+            }
+            list_size = other.list_size; // Sets size
+        }
+    }
+}
+
+template <class T>
+void dlist<T>::front_insert(const T item){ // inserts an item at the head of the list
+    if (head == NULL){ // Adding to empty list
+        head = tail = new dnode<T>(item, NULL, NULL); // Creates the first node
+        list_size++; // Increments size
+        return;
+    }
+    else{ // List with at least one item
+        head = new dnode<T>(item, NULL, head); // Creates a new head
+        head -> next() -> set_previous(head); // Restructures list
+        dnode<T>* cursor = head -> next(); // Makes a cursor to itterate and find the tail
+        while (cursor -> next() != NULL){
+            cursor = cursor -> next(); // Itterates cursor
+        }
+        tail = cursor; // Resets tail
+        list_size++; // Increments size
+        return;
+    }
+}
+
+template <class T>
+void dlist<T>::rear_insert(const T item){ // Places an item in the last "index" of the list
+    if (head == NULL){ // Adding to empty list
+        head = tail = new dnode<T>(item, NULL, NULL); // Creates the first node
+        list_size++; // Increments size
+        return;
+    }
+    else{ // List with at least one item
+        tail = new dnode<T>(item, tail, NULL); // Makes a new tail and restructures the list
+        tail -> previous() -> set_next(tail); // Restructures the list
+        list_size++; // Increments size
+        return;
+    }
+}
+
+template <class T>
+void dlist<T>::insert_before(const iterator it, const T item){ // Inserts an item before the itterator
+    if (it.currentPointer() == head){ // Iterator points to head
+        front_insert(item); // Calls the front insert function
+        return; // returns so the rest of this code won't run
+    }
+    else{
+        it.currentPointer() -> set_previous(new dnode<T>(item, it.currentPointer() -> previous(), it.currentPointer()));
+        it.currentPointer() -> previous() -> previous() -> set_next(it.currentPointer() -> previous());
+        list_size++;
+    }
+}
+
+template <class T>
+void dlist<T>::insert_after(const iterator it, const T item){ // Inserts an item after the itterator
+    if (it.currentPointer() == tail){ // iterator points to tail
+        rear_insert(item); // Calls the rear insert function
+        return;
+    }
+    else{
+    it.currentPointer() -> set_next(new dnode<T>(item, it.currentPointer(), it.currentPointer() -> next())); // Completes the data for the new node
+    it.currentPointer() -> next() -> next() -> set_previous(it.currentPointer() -> next()); // Restructures list
+    list_size++; // Increments size
+    }
+}
+
+template <class T>
+void dlist<T>::remove(const iterator it){ // Removes data in the passed itterator
+    if (it.currentPointer() == head){ // Beginging of list
+        head = head -> next(); // Advances head
+        head -> set_previous(NULL); // Fixes head
+        delete it.currentPointer(); // Deallocates old head
+        list_size--; // Decrement list size
+    }
+    else if (it.currentPointer() == tail){ // End of list
+        tail = tail -> previous(); // Moves tail down
+        tail -> set_next(NULL); // Fixes tail
+        delete it.currentPointer(); // Deallocates old tail
+        list_size--; // Decrement list size
+    }
+    else{
+        if(list_size == 1){ // List with 1 element
+            delete head; // Deallocate head
+            head = tail = NULL;
+            list_size--; // Decrement list size
+        }
+        else{ // No special case
+            it.currentPointer() -> previous() -> set_next(it.currentPointer() -> next());
+            it.currentPointer() -> next() -> set_previous(it.currentPointer() -> previous());
+            delete it.currentPointer();
+            list_size--;
+        }
+    }
+}
+
+template <class T>
+void dlist<T>::front_remove(){ // Removes the very first item in the list
+    if(list_size == 1){
+        delete head; // Deallocate head
+        head = tail = NULL;
+        list_size--; // Decrement list size
+    }
+    else{
+        dnode<T>* temp = head; // Temp pointer to deallocate old head
+        head = head -> next(); // Updates head
+        head -> set_previous(NULL); // Restructures list
+        delete temp; // Deallocates old head
+        list_size--; // Decrements size        
+    }
+}
+
+template <class T>
+void dlist<T>::rear_remove(){ // Removes the very last item in the list
+    if(list_size == 1){
+        delete head; // Deallocate head
+        head = tail = NULL;
+        list_size--; // Decrement list size
+    }
+    else{
+        dnode<T>* temp = tail; // Temp pointer for deallocating old tail
+        tail = tail -> previous(); // Updtates tail
+        tail -> set_next(NULL); // Restructures list
+        delete temp; // Deallocates old tail
+        list_size--; // Decrements size
+    }
+}
+
+template <class T>
+void dlist<T>::show() const{ // Outputs list
+    for (dnode<T>* cursor = head; cursor != NULL; cursor = cursor -> next()){ // Traverses through the list
+        std::cout << cursor -> data() << " "; // Outputs data in cursor with formatting
+    }
+}
+
+template <class T>
+void dlist<T>::reverse_show() const{ // Outputs the list in reverse
+    for (dnode<T>* cursor = tail; cursor != NULL; cursor = cursor -> previous()){ // Reverse list traversal
+        std::cout << cursor -> data() << " "; // Outputs data in cursor with formatting
+    }
+}

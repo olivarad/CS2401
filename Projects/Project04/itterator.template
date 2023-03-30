@@ -1,0 +1,34 @@
+template<class T>
+T node_iterator<T>::operator *()const{
+    return current -> data();
+}
+
+//prefix ++
+template<class T>
+node_iterator<T> node_iterator<T>::operator ++(){
+    current = current -> next();
+    return *this;
+}
+
+//postfix ++
+template<class T>
+node_iterator<T> node_iterator<T>::operator ++(int){
+    node_iterator<T> original(*this);
+    current = current -> next();
+    return original;
+}
+
+// prefix --
+template <class T>
+node_iterator<T> node_iterator<T>::operator --(){
+    current = current -> previous();
+    return *this;
+}
+
+// postfix --
+template <class T>
+node_iterator<T> node_iterator<T>::operator --(int){
+    node_iterator<T> original(*this);
+    current = current -> previous();
+    return original;
+}

@@ -1,0 +1,6 @@
+template <class T> 
+dnode<T>::dnode(T d, dnode<T>* p, dnode<T>* n){ 
+    data_field = d;
+    previousptr = p;
+    nextptr = n;
+}
