@@ -185,7 +185,22 @@ namespace main_savitch_14
 	}
 
 	bool Boop::is_legal(const std::string& move) const{
+		string piece = move.substr(0, 1); // Create a string to store the piece type
+		string location = move.substr(1, 2);
+		if (isalpha(piece[0] == 0)){ // Not a valid input
+			return 0;
+		}
+		else{
+			tolower(piece[0]);
+			if (piece == "c"){ // cat
+			}
+			else if (piece == "k"){ // kitten
 
+			}
+			else{ // invalid input
+				return 0;
+			}
+		}
 	}
 
 }
