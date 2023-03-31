@@ -54,6 +54,6 @@ void product_menu(){
     cout << "5: Knife\n";
     cout << "6: Cancel\n";
     cin >> choice;
-    shirt s;
+    product* p = new shirt;
 }
 
