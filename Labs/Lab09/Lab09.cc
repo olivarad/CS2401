@@ -13,7 +13,7 @@ int main(){
     list<product*> product_list;
     //ifstream fin;
     //fin.open("backup.txt");
-
+    //fin.close();
     main_menu();
     return 0;
 }
@@ -38,6 +38,7 @@ void main_menu(){
     }
     else{ // Invalid number
         cout << "Not a valid selction\n";
+        cin >> choice;
         main_menu();
         return;
     }
@@ -51,6 +52,8 @@ void product_menu(){
     cout << "3: Heel\n";
     cout << "4: Ears\n";
     cout << "5: Knife\n";
+    cout << "6: Cancel\n";
     cin >> choice;
+    shirt s;
 }
 

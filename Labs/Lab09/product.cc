@@ -4,11 +4,13 @@
 using namespace std;
 
 void shirt::input(list<product*> product_list){
+    product* p = this;
     cout << "Provide a size: ";
     cin >> size;
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
+    product_list.push_back(p);
 }
 
 void shirt::output(std::ostream outs){
@@ -25,6 +27,7 @@ void shirt::output(std::ostream outs){
 }
 
 void skirt::input(list<product*> product_list){
+    product* p = this;
     cout << "Provide a size: ";
     cin >> size;
     cout << "\n Provide a length: ";
@@ -32,6 +35,7 @@ void skirt::input(list<product*> product_list){
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
+    product_list.push_back(p);
 }
 
 void skirt::output(std::ostream outs){
@@ -50,6 +54,7 @@ void skirt::output(std::ostream outs){
 }
 
 void heel::input(list<product*> product_list){
+    product* p = this;
     cout << "Provide a size: ";
     cin >> size;
     cout << "\n Provide a heel height: ";
@@ -57,6 +62,7 @@ void heel::input(list<product*> product_list){
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
+    product_list.push_back(p);
 }
 
 void heel::output(std::ostream outs){
@@ -75,11 +81,13 @@ void heel::output(std::ostream outs){
 }
 
 void ears::input(list<product*> product_list){
+    product* p = this;
     cout << "provide an animal: ";
     cin >> animal;
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
+    product_list.push_back(p);
 }
 
 void ears::output(std::ostream outs){
@@ -96,11 +104,13 @@ void ears::output(std::ostream outs){
 }
 
 void knife::input(list<product*> product_list){
+    product* p = this;
     cout << "Provide a blade length: ";
     cin >> length;
     cout << "\nProvide a handle material\n";
     cin >> handle;
     cout << endl;
+    product_list.push_back(p);
 }
 
 void knife::output(std::ostream outs){
