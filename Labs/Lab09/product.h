@@ -7,14 +7,14 @@
 class product{
     public:
         virtual void input(product* p) = 0; // Product selection
-        virtual void output(std::ostream outs) = 0; // Outputs data
+        virtual void output() const = 0; // Outputs data
     private:
 };
 
 class shirt:public product{
     public:
         void input(product* p); // Class mutator function
-        void output(std::ostream outs);
+        void output() const;
     private:
         std::string size; // Shirt size
         std::string color; // Shirt color
@@ -23,7 +23,7 @@ class shirt:public product{
 class skirt:public product{
     public:
         void input(product* p); // Class mutator function
-        void output(std::ostream outs);
+        void output() const;
     private:
         std::string size; // Skirt size
         double length; // Skirt length
@@ -33,7 +33,7 @@ class skirt:public product{
 class heel:public product{
     public:
         void input(product* p); // Class mutator function
-        void output(std::ostream outs);
+        void output() const;
     private:
         double size;
         double height; // Heel height
@@ -43,7 +43,7 @@ class heel:public product{
 class ears:public product{
     public:
         void input(product* p); // Class mutator function
-        void output(std::ostream outs);
+        void output() const;
     private:
         std::string animal; // Animal the ears are modeled after
         std::string color; // Product color
@@ -52,7 +52,7 @@ class ears:public product{
 class knife:public product{
     public:
         void input(product* p); // Class mutator function
-        void output(std::ostream outs);
+        void output() const;
     private:
         double length; // Knife Length
         std::string handle; // Product handle material

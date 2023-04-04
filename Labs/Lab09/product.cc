@@ -9,20 +9,12 @@ void shirt::input(product* p){
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
-    //product_list.push_back(p);
 }
 
-void shirt::output(std::ostream outs){
-    if (&outs == &cout){ // outs is cout
-        outs << "shirt\n";
-        outs << "Size: " << size << endl;
-        outs << "Color: " << color << endl;
-    }
-    else{ // file stream
-        outs << "shirt\n";
-        outs << size << endl;
-        outs << color << endl;
-    }
+void shirt::output() const{
+    cout << "shirt\n";
+    cout << "Size: " << size << endl;
+    cout << "Color: " << color << endl;
 }
 
 void skirt::input(product* p){
@@ -33,22 +25,13 @@ void skirt::input(product* p){
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
-    //product_list.push_back(p);
 }
 
-void skirt::output(std::ostream outs){
-    if (&outs == &cout){ // outs is cout
-        outs << "skirt\n";
-        outs << "Size: " << size << endl;
-        outs << "Length: " << length << endl;
-        outs << "Color: " << color << endl;
-    }
-    else{ // file stream
-        outs << "skirt\n";
-        outs << size << endl;
-        outs << length << endl;
-        outs << color << endl;
-    }    
+void skirt::output() const{
+    cout << "skirt\n";
+    cout << "Size: " << size << endl;
+    cout << "Length: " << length << endl;
+    cout << "Color: " << color << endl;
 }
 
 void heel::input(product* p){
@@ -59,22 +42,13 @@ void heel::input(product* p){
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
-    //product_list.push_back(p);
 }
 
-void heel::output(std::ostream outs){
-    if (&outs == &cout){ // outs is cout
-        outs << "heel\n";
-        outs << "Size: " << size << endl;
-        outs << "Heel height: " << height << endl;
-        outs << "Color: " << color << endl;
-    }
-    else{ // file stream
-        outs << "heel\n";
-        outs << size << endl;
-        outs << height << endl;
-        outs << color << endl;
-    }    
+void heel::output() const{
+    cout << "heel\n";
+    cout << "Size: " << size << endl;
+    cout << "Heel height: " << height << endl;
+    cout << "Color: " << color << endl;  
 }
 
 void ears::input(product* p){
@@ -83,20 +57,12 @@ void ears::input(product* p){
     cout << "\nProvide a color: ";
     cin >> color;
     cout << endl;
-    //product_list.push_back(p);
 }
 
-void ears::output(std::ostream outs){
-    if (&outs == &cout){ // outs is cout
-        outs << "ears\n";
-        outs << "Animal: " << animal << endl;
-        outs << "Color: " << color << endl;
-    }
-    else{ // file stream
-        outs << "ears\n";
-        outs << animal << endl;
-        outs << color << endl;
-    }    
+void ears::output() const{
+    cout << "ears\n";
+    cout << "Animal: " << animal << endl;
+    cout << "Color: " << color << endl;
 }
 
 void knife::input(product* p){
@@ -105,18 +71,10 @@ void knife::input(product* p){
     cout << "\nProvide a handle material\n";
     cin >> handle;
     cout << endl;
-    //product_list.push_back(p);
 }
 
-void knife::output(std::ostream outs){
-    if (&outs == &cout){ // outs is cout
-        outs << "knife\n";
-        outs << "Length: " << length << endl;
-        outs << "Handle material: " << handle << endl;
-    }
-    else{ // file stream
-        outs << "knife\n";
-        outs << length << endl;
-        outs << handle << endl;
-    }    
+void knife::output() const{
+    cout << "knife\n";
+    cout << "Length: " << length << endl;
+    cout << "Handle material: " << handle << endl;
 }
