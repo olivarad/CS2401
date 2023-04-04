@@ -94,6 +94,7 @@ void product_menu(list<product*> product_list){
 void showlist(list<product*> l)
 {
     list<product*>::iterator it;
-    for (it = l.begin(); it != l.end(); ++it)
+    for (it = l.begin(); it != l.end(); ++it){
         (*it) -> output(cout);
+    }
 }
