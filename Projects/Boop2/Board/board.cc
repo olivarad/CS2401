@@ -7,11 +7,11 @@ using namespace main_savitch_14;
 void display_status(Space board[6][6]);
 
 int main(){
-    //string move = "k2";
+    string move = "c2";
     Space board[6][6]; // Creates an empty 6x6 board
     display_status(board);
-    //board[0][0].Space_mutator(move);
-    //display_status(board);
+    board[0][0].Space_mutator(move);
+    display_status(board);
     return 0;
 }
 

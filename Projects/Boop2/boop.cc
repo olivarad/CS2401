@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "space.h"
 #include "boop.h"
 
@@ -12,7 +13,34 @@ Boop::Boop(){
 }
 
 // Have the next player make a specified move:
-void Boop::make_move(const std::string& move){
+void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 1F
+    char piece = toupper(move.substr(0, 1)[0]); // Sets piece to track the piece type
+    int column = (toupper(move.substr(1, 1)[0])) - 49; // Sets column to track the requested column
+    int row = (toupper(move.substr(2,1)[0])) - 65; // Sets row to track the requested row
+    if (move_number % 2 == 0){ // Player 1 move
+        if (piece == 'K'){ // Player 1 kitten
+            string board_move = "k1";
+            board[row][column].Space_mutator(board_move);
+            player1_kittens--;
+        }
+        else{ // Player 1 cat
+            string board_move = "c1";
+            board[row][column].Space_mutator(board_move);
+            player1_cats--;
+        }
+    }
+    else{ // Player 2 move
+        if (piece == 'K'){ // Player 2 kitten
+            string board_move = "k2";
+            board[row][column].Space_mutator(board_move);
+            player2_kittens--;
+        }
+        else{ // Player 2 cat
+            string board_move = "c2";
+            board[row][column].Space_mutator(board_move);
+            player2_cats--;
+        }
+    }
     ++move_number;
 }
 
@@ -34,28 +62,28 @@ void Boop::compute_moves(std::queue<std::string>& moves) const{
 
 void Boop::display_status( ){
     int sub_row = 0;
-    cout << "\n\n\n      1        2        3        4        5        6        \n";
+    cout << "\n\n\n";
     cout << " --------------------------------------------------------\n";
     for (int row = 0; row < 6; row++){
         for (int sub_column = 0; sub_column < 3; sub_column++){
             switch (sub_row){
                 case 1:
-                    cout << "F|";
+                    cout << "A|";
                     break;
                 case 4:
-                    cout << "E|";
-                    break;
-                case 7:
-                    cout << "D|";
-                    break;
-                case 10:
-                    cout << "C|";
-                    break;
-                case 13:
                     cout << "B|";
                     break;
+                case 7:
+                    cout << "C|";
+                    break;
+                case 10:
+                    cout << "D|";
+                    break;
+                case 13:
+                    cout << "E|";
+                    break;
                 case 16:
-                    cout << "A|";
+                    cout << "F|";
                     break;
                 default:
                     cout << " |";
@@ -113,7 +141,13 @@ void Boop::display_status( ){
             cout << " |------------------------------------------------------|\n";
         }
     }
-    cout << " --------------------------------------------------------\n\n\n";
+    cout << " --------------------------------------------------------\n";
+    cout << "      1        2        3        4        5        6        \n\n\n";
+
+    cout << "Player 1 kittens: " << player1_kittens << endl;
+    cout << "PLayer 1 cats: " << player1_cats << endl;
+    cout << "Player 2 kittens: " << player2_kittens << endl;
+    cout << "Player 2 cats: " << player2_cats << endl;
 }
 
 int Boop::evaluate( ) const{
@@ -124,6 +158,6 @@ bool Boop::is_game_over( ) const{
     return 0; // Temp
 }
 
-bool Boop::is_legal(const std::string& move) const{
+bool Boop::is_legal(const std::string& move) const{ // verify that the player has these pieces
     return 1; // Temp
 }

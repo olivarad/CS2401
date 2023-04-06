@@ -49,7 +49,7 @@ namespace main_savitch_14
     string game::get_user_move( ) const
     {
 		string answer;
-		
+		cout << "Move format K1A for kitten in (1, A)\n";
 		display_message("Your move, please: ");
 		getline(cin, answer);
 		return answer;
