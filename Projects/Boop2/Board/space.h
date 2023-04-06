@@ -12,7 +12,7 @@ namespace main_savitch_14
             void Space_mutator(std::string& move);
 
             //Space Accessor
-            int Access_State();
+            int Access_State() const;
 
         private:
             // State variable 0 is empty 1 is k1, 2 is k2, 3 is c1, 4 is c2
