@@ -145,7 +145,7 @@ void Boop::display_status( ){
     cout << "      1        2        3        4        5        6        \n\n\n";
 
     cout << "Player 1 kittens: " << player1_kittens << endl;
-    cout << "PLayer 1 cats: " << player1_cats << endl;
+    cout << "Player 1 cats: " << player1_cats << endl;
     cout << "Player 2 kittens: " << player2_kittens << endl;
     cout << "Player 2 cats: " << player2_cats << endl;
 }
@@ -159,5 +159,45 @@ bool Boop::is_game_over( ) const{
 }
 
 bool Boop::is_legal(const std::string& move) const{ // verify that the player has these pieces
-    return 1; // Temp
+    if (move.length() != 3){ // Invalid string length
+        return 0;
+    }
+
+    char piece = toupper(move.substr(0, 1)[0]); // Sets piece to track the piece type
+    if (piece != 'K' && piece != 'C'){ // Not a valid piece selection
+        return 0;
+    }
+
+    if (move_number % 2 == 0){ // Player 1 move
+        if (piece == 'K' && player1_kittens == 0){ // No pieces to place
+            return 0;
+        }
+        else if (piece == 'C' && player1_cats == 0){
+            return 0;
+        }
+    }
+    else{ // Player 2 move
+        if (piece == 'K' && player2_kittens == 0){ // No pieces to place
+            return 0;
+        }
+        else if (piece == 'C' && player2_cats == 0){
+            return 0;
+        }
+    }
+
+    int column = (toupper(move.substr(1, 1)[0])) - 49; // Sets column to track the requested column
+    if (column < 0 || column > 5){
+        return 0;
+    }
+
+    int row = (toupper(move.substr(2,1)[0])) - 65; // Sets row to track the requested row
+    if (row < 0 || row > 5){
+        return 0;
+    }
+
+    if (board[row][column].Access_State() != 0){ // Not an empty spot
+
+    }
+
+    return 1;
 }

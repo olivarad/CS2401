@@ -26,6 +26,6 @@ void Space::Space_mutator(std::string& move){
     }
 }
 
-int Space::Access_State(){
+int Space::Access_State() const{
     return state;
 }
