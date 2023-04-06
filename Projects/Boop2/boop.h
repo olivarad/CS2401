@@ -22,7 +22,7 @@ namespace main_savitch_14
             // Compute all the moves that the next player can make:
             void compute_moves(std::queue<std::string>& moves) const;
             // Display the status of the current game:
-            void display_status( ) const;
+            void display_status( );
             // Evaluate a board position:
             // NOTE: positive values are good for the computer.
             int evaluate( ) const;

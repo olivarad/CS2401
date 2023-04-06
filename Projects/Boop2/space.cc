@@ -2,7 +2,6 @@
 #include "space.h"
 
 using namespace std;
-using namespace main_savitch_14;
 
 //Default constructor (Sets space to empty or 0)
 Space::Space(){
