@@ -14,6 +14,8 @@ namespace main_savitch_14
             // Have the next player make a specified move:
             void make_move(const std::string& move);
 
+            void booping(const char piece, int row, int col);
+
             // Restart the game from the beginning:
             void restart( );
 

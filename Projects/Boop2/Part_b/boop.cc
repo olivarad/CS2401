@@ -42,6 +42,53 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
         }
     }
     ++move_number;
+    booping(piece, row, column);
+}
+
+void Boop::booping(const char piece, int row, int col){
+    string empty = "0";
+    if (piece == 'K'){ // Kitten
+        if (row == 1 ){
+            row--;
+            if (board[row][col].Access_State() == 1){
+                board[row][col].Space_mutator(empty);
+                player1_kittens++;
+            }
+            else if(board[row][col].Access_State() == 2){
+                board[row][col].Space_mutator(empty);
+                player2_kittens++;
+            }
+        }
+        else if( row == 4){
+
+        }
+        else if (col == 1){
+
+        }
+        else if (col == 4){
+
+        }
+        else{ // Non Edge Case
+
+        }
+    }
+    else if (piece == 'C'){ // Cat
+        if (row == 1 ){
+
+        }
+        else if( row == 4){
+
+        }
+        else if (col == 1){
+
+        }
+        else if (col == 4){
+
+        }
+        else{ // Non Edge Case
+
+        }
+    }
 }
 
 // Restart the game from the beginning:
