@@ -460,6 +460,10 @@ void Boop::booping(const char piece, int row, int col){
     }
 }
 
+void Boop::promotion(){ // Promotes 3 matching kittens in a row or 8 matching kittens on a board to one cat
+
+}
+
 // Restart the game from the beginning:
 void Boop::restart( ){
     move_number = 0; 
