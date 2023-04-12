@@ -6,20 +6,23 @@
 
 using namespace std;
 
-void main_menu(list<product*> product_list);
+bool main_menu(list<product*> product_list);
 void product_menu(list<product*> product_list);
 void showlist(list<product*> l);
 
 int main(){
+    bool quit = 0;
     list<product*> product_list;
     //ifstream fin;
     //fin.open("backup.txt");
     //fin.close();
-    main_menu(product_list);
+    while (quit == 0){
+        quit = main_menu(product_list);
+    }
     return 0;
 }
 
-void main_menu(list<product*> product_list){
+bool main_menu(list<product*> product_list){
     int choice = 0;
     cout << "Please select from the following options\n";
     cout << "1: Place an order\n";
@@ -29,19 +32,20 @@ void main_menu(list<product*> product_list){
     
     if (choice == 1){ // Place an order
         product_menu(product_list);
-        return;
+        return 0;
     }
     else if (choice == 2){ // View orders
-        return;
+        showlist(product_list);
+        return 0;
     }
     else if (choice == 3){ // Quit
-        return;
+        return 1;
     }
     else{ // Invalid number
         cout << "Not a valid selction\n";
         cin >> choice;
         main_menu(product_list);
-        return;
+        return 0;
     }
 }
 
@@ -73,7 +77,7 @@ void product_menu(list<product*> product_list){
             product_list.push_back(p);
             break;
         case 4: // ears
-            p = new ears;
+            p = new ears; 
             p -> input(p);
             product_list.push_back(p);
             break;

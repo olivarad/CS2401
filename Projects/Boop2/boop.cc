@@ -9,7 +9,6 @@ using namespace main_savitch_14;
 // Default Constructor (Calls restart())
 Boop::Boop(){
     restart();
-    // Resets board
 }
 
 // Have the next player make a specified move:
@@ -46,9 +45,15 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
 
 // Restart the game from the beginning:
 void Boop::restart( ){
+    string set = "0";
     move_number = 0; 
     player1_kittens = player2_kittens = 8;
     player1_cats = player2_cats = 0;
+    for (int row = 0; row < 6; row++){ // Resets board
+        for (int column = 0; column < 6; column++){
+            board[row][column].Space_mutator(set);
+        }
+    }
 }
 
 game* Boop::clone( ) const{
@@ -196,7 +201,7 @@ bool Boop::is_legal(const std::string& move) const{ // verify that the player ha
     }
 
     if (board[row][column].Access_State() != 0){ // Not an empty spot
-
+        return 0;
     }
 
     return 1;

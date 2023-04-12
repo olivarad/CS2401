@@ -51,641 +51,208 @@ void Boop::booping(const char piece, int row, int col){
     string LittleTrans = "k2";
     string BigLesbian = "c1";
     string BigTrans = "c2";
-    if (row == 0 && col == 0){
-        if (piece == 'C' && board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
-            switch (board[row][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row + 1][col + 1].Access_State() != 0 && board[row + 2][col + 2].Access_State() == 0){
-            switch (board[row + 1][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col + 1].Space_mutator(empty);
-                    board[row + 2][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col + 1].Space_mutator(empty);
-                    board[row + 2][col + 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row + 1][col + 1].Space_mutator(empty);
-                    board[row + 2][col + 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row + 1][col + 1].Space_mutator(empty);
-                    board[row + 2][col + 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-            switch (board[row + 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
-            switch (board[row][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row + 1][col + 1].Access_State() != 0 && board[row + 2][col + 2].Access_State() == 0){
-            switch (board[row + 1][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col + 1].Space_mutator(empty);
-                    board[row + 2][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col + 1].Space_mutator(empty);
-                    board[row + 2][col + 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-            switch (board[row + 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-    }
-
-    else if (row == 0 && col == 5){
-        if (piece == 'C' && board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
-            switch (board[row][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row + 1][col - 1].Access_State() != 0 && board[row + 2][col - 2].Access_State() == 0){
-            switch (board[row + 1][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col - 1].Space_mutator(empty);
-                    board[row + 2][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col - 1].Space_mutator(empty);
-                    board[row + 2][col - 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row + 1][col - 1].Space_mutator(empty);
-                    board[row + 2][col - 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row + 1][col - 1].Space_mutator(empty);
-                    board[row + 2][col - 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-            switch (board[row + 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
-            switch (board[row][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row + 1][col - 1].Access_State() != 0 && board[row + 2][col - 2].Access_State() == 0){
-            switch (board[row + 1][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col - 1].Space_mutator(empty);
-                    board[row + 2][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col - 1].Space_mutator(empty);
-                    board[row + 2][col - 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-            switch (board[row + 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row + 1][col].Space_mutator(empty);
-                    board[row + 2][col].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-    }
-
-    else if (row == 5 && col == 0){
-        if (piece == 'C' && board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
-            switch (board[row][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row - 1][col + 1].Access_State() != 0 && board[row - 2][col + 2].Access_State() == 0){
-            switch (board[row - 1][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col + 1].Space_mutator(empty);
-                    board[row - 2][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col + 1].Space_mutator(empty);
-                    board[row - 2][col + 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row - 1][col + 1].Space_mutator(empty);
-                    board[row - 2][col + 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row - 1][col + 1].Space_mutator(empty);
-                    board[row - 2][col + 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row - 1][col].Access_State() != 0 && board[row - 2][col].Access_State() == 0){
-            switch (board[row - 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
-            switch (board[row][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col + 1].Space_mutator(empty);
-                    board[row][col + 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row - 1][col + 1].Access_State() != 0 && board[row - 2][col + 2].Access_State() == 0){
-            switch (board[row - 1][col + 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col + 1].Space_mutator(empty);
-                    board[row - 2][col + 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col + 1].Space_mutator(empty);
-                    board[row - 2][col + 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row - 1][col].Access_State() != 0 && board[row - 2][col].Access_State() == 0){
-            switch (board[row - 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-    }
-
-    else if (row == 5 && col == 5){
-        if (piece == 'C' && board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
-            switch (board[row][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row - 1][col - 1].Access_State() != 0 && board[row - 2][col - 2].Access_State() == 0){
-            switch (board[row - 1][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col - 1].Space_mutator(empty);
-                    board[row - 2][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col - 1].Space_mutator(empty);
-                    board[row - 2][col - 2].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row - 1][col - 1].Space_mutator(empty);
-                    board[row - 2][col - 2].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row - 1][col - 1].Space_mutator(empty);
-                    board[row - 2][col - 2].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'C' && board[row - 1][col].Access_State() != 0 && board[row - 2][col].Access_State() == 0){
-            switch (board[row - 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleTrans);
-                    break;
-                case 3: // Big Lesbian
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(BigLesbian);
-                    break;
-                case 4: // Big Trans
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(BigTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
-            switch (board[row][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row][col - 1].Space_mutator(empty);
-                    board[row][col - 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row - 1][col - 1].Access_State() != 0 && board[row - 2][col - 2].Access_State() == 0){
-            switch (board[row - 1][col - 1].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col - 1].Space_mutator(empty);
-                    board[row - 2][col - 2].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col - 1].Space_mutator(empty);
-                    board[row - 2][col - 2].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-
-        if (piece == 'K' && board[row - 1][col].Access_State() != 0 && board[row - 2][col].Access_State() == 0){
-            switch (board[row - 1][col].Access_State()){
-                case 1: // Little Lesbian
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleLesbian);
-                    break;
-                case 2: // Little Trans
-                    board[row - 1][col].Space_mutator(empty);
-                    board[row - 2][col].Space_mutator(LittleTrans);
-                    break;
-            }
-        }
-    }
-
-    else if (row == 0){ // Pieces left, right, and under
-        if (col == 1){
-            if (piece == 'C' && board[row][col - 1].Access_State() != 0){
-                switch (board[row][col - 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col - 1].Space_mutator(empty);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col - 1].Space_mutator(empty);
-                        break;
-                    case 3: // Big Lesbian
-                        board[row][col - 1].Space_mutator(empty);
-                        break;
-                    case 4: // Big Trans
-                        board[row][col - 1].Space_mutator(empty);
-                        break;
+    if (row - 1 > -1){ // The space above the placed piece is valid
+        if (row - 2 > -1){ // The space 2 spots above the placement is valid
+            if (board[row - 1][col].Access_State() != 0 && board[row - 2][col].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row - 1][col].Access_State()){ // Piece above the placement
+                        case 1: // Little Lesbian
+                            board[row - 1][col].Space_mutator(empty);
+                            board[row - 2][col].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row - 1][col].Space_mutator(empty);
+                            board[row - 2][col].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row - 1][col].Space_mutator(empty);
+                            board[row - 2][col].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row - 1][col].Space_mutator(empty);
+                            board[row - 2][col].Space_mutator(BigTrans);
+                            break;
+                    }
                 }
-            }
-
-            if (piece == 'C' && board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
-                switch (board[row][col + 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col + 1].Space_mutator(empty);
-                        board[row][col + 2].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col + 1].Space_mutator(empty);
-                        board[row][col + 2].Space_mutator(LittleTrans);
-                        break;
-                    case 3: // Big Lesbian
-                        board[row][col + 1].Space_mutator(empty);
-                        board[row][col + 2].Space_mutator(BigLesbian);
-                        break;
-                    case 4: // Big Trans
-                        board[row][col + 1].Space_mutator(empty);
-                        board[row][col + 2].Space_mutator(BigTrans);
-                        break;
-                }
-            }
-
-            if (piece == 'C' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-                switch (board[row + 1][col].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleTrans);
-                        break;
-                    case 3: // Big Lesbian
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(BigLesbian);
-                        break;
-                    case 4: // Big Trans
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(BigTrans);
-                        break;
-                }
-            }
-
-            if (piece == 'K' && board[row][col - 1].Access_State() != 0){
-                switch (board[row][col - 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col - 1].Space_mutator(empty);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col - 1].Space_mutator(empty);
-                        break;
-                }
-            }
-
-            if (piece == 'K' && board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
-                switch (board[row][col + 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col + 1].Space_mutator(empty);
-                        board[row][col + 2].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col + 1].Space_mutator(empty);
-                        board[row][col + 2].Space_mutator(LittleTrans);
-                        break;
-                }
-            }
-
-            if (piece == 'K' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-                switch (board[row + 1][col].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleTrans);
-                        break;
+                else{ // Kitten
+                    switch (board[row - 1][col].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row - 1][col].Space_mutator(empty);
+                            board[row - 2][col].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row - 1][col].Space_mutator(empty);
+                            board[row - 2][col].Space_mutator(LittleTrans);
+                            break;
+                    }
                 }
             }
         }
-        else if (col == 4){
-            if (piece == 'C' && board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
-                switch (board[row][col - 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col - 1].Space_mutator(empty);
-                        board[row][col - 2].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col - 1].Space_mutator(empty);
-                        board[row][col - 2].Space_mutator(LittleTrans);
-                        break;
-                    case 3: // Big Lesbian
-                        board[row][col - 1].Space_mutator(empty);
-                        board[row][col - 2].Space_mutator(BigLesbian);
-                        break;
-                    case 4: // Big Trans
-                        board[row][col - 1].Space_mutator(empty);
-                        board[row][col - 2].Space_mutator(BigTrans);
-                        break;
+        else{ // The space 1 spot above the placement is the boards edge
+            if (board[row - 1][col].Access_State() != 0){ // Spot above placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row - 1][col].Space_mutator(empty);
                 }
-            }
-
-            if (piece == 'C' && board[row][col + 1].Access_State() != 0){
-                switch (board[row][col + 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col + 1].Space_mutator(empty);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col + 1].Space_mutator(empty);
-                        break;
-                    case 3: // Big Lesbian
-                        board[row][col + 1].Space_mutator(empty);
-                        break;
-                    case 4: // Big Trans
-                        board[row][col + 1].Space_mutator(empty);
-                        break;
-                }
-            }
-
-            if (piece == 'C' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-                switch (board[row + 1][col].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleTrans);
-                        break;
-                    case 3: // Big Lesbian
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(BigLesbian);
-                        break;
-                    case 4: // Big Trans
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(BigTrans);
-                        break;
-                }
-            }
-
-            if (piece == 'K' && board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
-                switch (board[row][col - 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col - 1].Space_mutator(empty);
-                        board[row][col - 2].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col - 1].Space_mutator(empty);
-                        board[row][col - 2].Space_mutator(LittleTrans);
-                        break;
-                }
-            }
-
-            if (piece == 'K' && board[row][col + 1].Access_State() != 0){
-                switch (board[row][col + 1].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row][col + 1].Space_mutator(empty);
-                        break;
-                    case 2: // Little Trans
-                        board[row][col + 1].Space_mutator(empty);
-                        break;
-                }
-            }
-
-            if (piece == 'K' && board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
-                switch (board[row + 1][col].Access_State()){
-                    case 1: // Little Lesbian
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleLesbian);
-                        break;
-                    case 2: // Little Trans
-                        board[row + 1][col].Space_mutator(empty);
-                        board[row + 2][col].Space_mutator(LittleTrans);
-                        break;
+                else{ // Kitten
+                    if (board[row - 1][col].Access_State() < 3){ // Kitten above placement
+                        board[row - 1][col].Space_mutator(empty);
+                    }
                 }
             }
         }
     }
-    else if (row == 1){
 
+    if (row + 1 < 6){ // The space below the placed piece is valid
+        if (row + 2 < 6){ // The space 2 spots below the placement is valid
+            if (board[row + 1][col].Access_State() != 0 && board[row + 2][col].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row + 1][col].Access_State()){ // Piece below the placement
+                        case 1: // Little Lesbian
+                            board[row + 1][col].Space_mutator(empty);
+                            board[row + 2][col].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row + 1][col].Space_mutator(empty);
+                            board[row + 2][col].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row + 1][col].Space_mutator(empty);
+                            board[row + 2][col].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row + 1][col].Space_mutator(empty);
+                            board[row + 2][col].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row + 1][col].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row + 1][col].Space_mutator(empty);
+                            board[row + 2][col].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row + 1][col].Space_mutator(empty);
+                            board[row + 2][col].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot below the placement is the boards edge
+            if (board[row + 1][col].Access_State() != 0){ // Spot below placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row + 1][col].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row + 1][col].Access_State() < 3){ // Kitten below placement
+                        board[row + 1][col].Space_mutator(empty);
+                    }
+                }
+            }
+        }
     }
-    else if (row == 4){
 
+    if (col - 1 > -1){ // The space left of the placed piece is valid
+        if (col - 2 > -1){ // The space 2 spots left of the placement is valid
+            if (board[row][col - 1].Access_State() != 0 && board[row][col - 2].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row][col - 1].Access_State()){ // Piece left of the placement
+                        case 1: // Little Lesbian
+                            board[row][col - 1].Space_mutator(empty);
+                            board[row][col - 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row][col - 1].Space_mutator(empty);
+                            board[row][col - 2].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row][col - 1].Space_mutator(empty);
+                            board[row][col - 2].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row][col - 1].Space_mutator(empty);
+                            board[row][col - 2].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row][col - 1].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row][col - 1].Space_mutator(empty);
+                            board[row][col - 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row][col - 1].Space_mutator(empty);
+                            board[row][col - 2].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot left of the placement is the boards edge
+            if (board[row][col - 1].Access_State() != 0){ // Spot left of placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row][col - 1].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row][col - 1].Access_State() < 3){ // Kitten left of placement
+                        board[row][col - 1].Space_mutator(empty);
+                    }
+                }
+            }
+        }
     }
-    else if (row == 5){
 
-    }
-    else if (col == 0){
-
-    }
-    else if (col == 1){
-
-    }
-    else if (col == 4){
-
-    }
-    else if (col == 5){
-
-    }
-    else{
-
+    if (col + 1 < 6){ // The space right of the placed piece is valid
+        if (col + 2 < 6){ // The space 2 spots right of the placement is valid
+            if (board[row][col + 1].Access_State() != 0 && board[row][col + 2].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row][col + 1].Access_State()){ // Piece right of the placement
+                        case 1: // Little Lesbian
+                            board[row][col + 1].Space_mutator(empty);
+                            board[row][col + 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row][col + 1].Space_mutator(empty);
+                            board[row][col + 2].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row][col + 1].Space_mutator(empty);
+                            board[row][col + 2].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row][col + 1].Space_mutator(empty);
+                            board[row][col + 2].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row][col + 1].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row][col + 1].Space_mutator(empty);
+                            board[row][col + 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row][col + 1].Space_mutator(empty);
+                            board[row][col + 2].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot right of the placement is the boards edge
+            if (board[row][col + 1].Access_State() != 0){ // Spot right of placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row][col + 1].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row][col + 1].Access_State() < 3){ // Kitten left of placement
+                        board[row][col + 1].Space_mutator(empty);
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -693,7 +260,7 @@ void Boop::booping(const char piece, int row, int col){
 void Boop::restart( ){
     move_number = 0; 
     player1_kittens = player2_kittens = 8;
-    player1_cats = player2_cats = 0;
+    player1_cats = player2_cats = 8;
 }
 
 game* Boop::clone( ) const{

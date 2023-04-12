@@ -6,7 +6,7 @@
 
 class Space{
     public:
-        // Default constructor (Sets space to empty)
+        // constructor (Sets space to empty)
         Space();
 
         //Space mutator function (Move format is substring of full move with only piece information)

@@ -1,14 +1,18 @@
 #include <iostream>
+#include <list>
 #include "product.h"
 
 using namespace std;
 
-void shirt::input(product* p){
-    cout << "Provide a size: ";
+void shirt::input(product*& p){
+    /*cout << "Provide a size: ";
     cin >> size;
     cout << "\nProvide a color: ";
     cin >> color;
-    cout << endl;
+    cout << endl;*/
+    size = "large";
+    color = "pink";
+    //product_list.push_back(p);
 }
 
 void shirt::output() const{
@@ -17,7 +21,7 @@ void shirt::output() const{
     cout << "Color: " << color << endl;
 }
 
-void skirt::input(product* p){
+void skirt::input(product*& p){
     cout << "Provide a size: ";
     cin >> size;
     cout << "\n Provide a length: ";
@@ -34,7 +38,7 @@ void skirt::output() const{
     cout << "Color: " << color << endl;
 }
 
-void heel::input(product* p){
+void heel::input(product*& p){
     cout << "Provide a size: ";
     cin >> size;
     cout << "\n Provide a heel height: ";
@@ -51,7 +55,7 @@ void heel::output() const{
     cout << "Color: " << color << endl;  
 }
 
-void ears::input(product* p){
+void ears::input(product*& p){
     cout << "provide an animal: ";
     cin >> animal;
     cout << "\nProvide a color: ";
@@ -65,7 +69,7 @@ void ears::output() const{
     cout << "Color: " << color << endl;
 }
 
-void knife::input(product* p){
+void knife::input(product*& p){
     cout << "Provide a blade length: ";
     cin >> length;
     cout << "\nProvide a handle material\n";
