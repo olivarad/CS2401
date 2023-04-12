@@ -254,6 +254,210 @@ void Boop::booping(const char piece, int row, int col){
             }
         }
     }
+
+    if (row - 1 > -1 && col + 1 < 6){ // The space "NE" the placed piece is valid
+        if (row - 2 > -1 && col + 2 < 6){ // The space 2 spots "NE" of the placement is valid
+            if (board[row - 1][col + 1].Access_State() != 0 && board[row - 2][col + 2].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row - 1][col + 1].Access_State()){ // Piece "NE" of the placement
+                        case 1: // Little Lesbian
+                            board[row - 1][col + 1].Space_mutator(empty);
+                            board[row - 2][col + 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row - 1][col + 1].Space_mutator(empty);
+                            board[row - 2][col + 2].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row - 1][col + 1].Space_mutator(empty);
+                            board[row - 2][col + 2].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row - 1][col + 1].Space_mutator(empty);
+                            board[row - 2][col + 2].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row - 1][col + 1].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row - 1][col + 1].Space_mutator(empty);
+                            board[row - 2][col + 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row - 1][col + 1].Space_mutator(empty);
+                            board[row - 2][col + 2].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot "NE" of the placement is the boards edge
+            if (board[row - 1][col + 1].Access_State() != 0){ // Spot "NE" of placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row - 1][col + 1].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row - 1][col + 1].Access_State() < 3){ // Kitten "NE" of placement
+                        board[row - 1][col + 1].Space_mutator(empty);
+                    }
+                }
+            }
+        }
+    }
+
+    if (row + 1 < 6 && col + 1 < 6){ // The space "SE" the placed piece is valid
+        if (row + 2 < 6 && col + 2 < 6){ // The space 2 spots "SE" of the placement is valid
+            if (board[row + 1][col + 1].Access_State() != 0 && board[row + 2][col + 2].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row + 1][col + 1].Access_State()){ // Piece "SE" of the placement
+                        case 1: // Little Lesbian
+                            board[row + 1][col + 1].Space_mutator(empty);
+                            board[row + 2][col + 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row + 1][col + 1].Space_mutator(empty);
+                            board[row + 2][col + 2].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row + 1][col + 1].Space_mutator(empty);
+                            board[row + 2][col + 2].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row + 1][col + 1].Space_mutator(empty);
+                            board[row + 2][col + 2].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row + 1][col + 1].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row + 1][col + 1].Space_mutator(empty);
+                            board[row + 2][col + 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row + 1][col + 1].Space_mutator(empty);
+                            board[row + 2][col + 2].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot "SE" of the placement is the boards edge
+            if (board[row + 1][col + 1].Access_State() != 0){ // Spot "SE" of placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row + 1][col + 1].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row + 1][col + 1].Access_State() < 3){ // Kitten "SE" of placement
+                        board[row + 1][col + 1].Space_mutator(empty);
+                    }
+                }
+            }
+        }
+    }
+
+    if (row + 1 < 6 && col - 1 > -1){ // The space "SW" the placed piece is valid
+        if (row + 2 < 6 && col - 2 > -1){ // The space 2 spots "SW" of the placement is valid
+            if (board[row + 1][col - 1].Access_State() != 0 && board[row + 2][col - 2].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row + 1][col - 1].Access_State()){ // Piece "SW" of the placement
+                        case 1: // Little Lesbian
+                            board[row + 1][col - 1].Space_mutator(empty);
+                            board[row + 2][col - 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row + 1][col - 1].Space_mutator(empty);
+                            board[row + 2][col - 2].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row + 1][col - 1].Space_mutator(empty);
+                            board[row + 2][col - 2].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row + 1][col - 1].Space_mutator(empty);
+                            board[row + 2][col - 2].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row + 1][col - 1].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row + 1][col - 1].Space_mutator(empty);
+                            board[row + 2][col - 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row + 1][col - 1].Space_mutator(empty);
+                            board[row + 2][col - 2].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot "SW" of the placement is the boards edge
+            if (board[row + 1][col - 1].Access_State() != 0){ // Spot "SW" of placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row + 1][col - 1].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row + 1][col - 1].Access_State() < 3){ // Kitten "SW" of placement
+                        board[row + 1][col - 1].Space_mutator(empty);
+                    }
+                }
+            }
+        }
+    }
+
+    if (row - 1 > -1 && col - 1 > -1){ // The space "NW" the placed piece is valid
+        if (row - 2 > -1 && col - 2 > -1){ // The space 2 spots "NW" of the placement is valid
+            if (board[row - 1][col - 1].Access_State() != 0 && board[row - 2][col - 2].Access_State() == 0){
+                if (piece == 'C'){ // Cat
+                    switch (board[row - 1][col - 1].Access_State()){ // Piece "NW" of the placement
+                        case 1: // Little Lesbian
+                            board[row - 1][col - 1].Space_mutator(empty);
+                            board[row - 2][col - 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row - 1][col - 1].Space_mutator(empty);
+                            board[row - 2][col - 2].Space_mutator(LittleTrans);
+                            break;
+                        case 3: // Big Lesbian
+                            board[row - 1][col - 1].Space_mutator(empty);
+                            board[row - 2][col - 2].Space_mutator(BigLesbian);
+                            break;
+                        case 4: // Big Trans
+                            board[row - 1][col - 1].Space_mutator(empty);
+                            board[row - 2][col - 2].Space_mutator(BigTrans);
+                            break;
+                    }
+                }
+                else{ // Kitten
+                    switch (board[row - 1][col - 1].Access_State()){
+                        case 1: // Little Lesbian
+                            board[row - 1][col - 1].Space_mutator(empty);
+                            board[row - 2][col - 2].Space_mutator(LittleLesbian);
+                            break;
+                        case 2: // Little Trans
+                            board[row - 1][col - 1].Space_mutator(empty);
+                            board[row - 2][col - 2].Space_mutator(LittleTrans);
+                            break;
+                    }
+                }
+            }
+        }
+        else{ // The space 1 spot "NW" of the placement is the boards edge
+            if (board[row - 1][col - 1].Access_State() != 0){ // Spot "NW" of placement is not empty
+                if (piece == 'C'){ // Cat
+                    board[row - 1][col - 1].Space_mutator(empty);
+                }
+                else{ // Kitten
+                    if (board[row - 1][col - 1].Access_State() < 3){ // Kitten "NW" of placement
+                        board[row - 1][col - 1].Space_mutator(empty);
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Restart the game from the beginning:
