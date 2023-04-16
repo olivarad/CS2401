@@ -15,12 +15,14 @@ using namespace std;
 int main(){
 	char c;
 	char tmp;
-	int onenum, twonum;
+	int onenum, twonum, result;
 	bool continu = true;
+	bool error = 0;
 	// declare an STL stack called nums right here:
 	stack<int> nums;
 
 	do{
+		error = 0;
 		cout << "Please enter your expression:\n";
 
 		c = cin.get(); // priming read for the sentinel loop.
@@ -37,16 +39,21 @@ int main(){
 					//pop two numbers from the stack
 					twonum = nums.top();
 					nums.pop();
-					onenum = nums.top();
+					if(!nums.empty()){
+						onenum = nums.top();
 					nums.pop();
                     // evaluate them using the evaluate from stack_useful
 					// push result onto the stack
 					nums.push(evaluate(onenum, twonum, c));
-				}
-				else{
-					cout << "Error:";
-					cout << " Expression doesn't contain enough enough numbers."; // what did this error tell us about the user's expression?
-					return -1;
+					}
+					else{
+						error = 1;
+						cout << "Error:";
+						cout << " Expression doesn't contain enough enough numbers.\n"; // what did this error tell us about the user's expression?
+						while (!nums.empty()){ // Reset Calculator
+							nums.pop();
+						}
+					}
 				}
 			}
 
@@ -56,8 +63,18 @@ int main(){
 		// output the final result from the top of the stack
 		// but only after you check to make sure there's something on the stack
 		if (nums.empty() != 1){ // nums has data
-			cout << "result: " << nums.top() << endl;
+			result = nums.top();
 			nums.pop();
+			if (nums.empty() != 0 && error != 1){
+				cout << "result: " << result << endl;
+			}
+			else if (error != 1){
+				cout << "Error:";
+				cout << " Expression contains too many numbers.\n"; // what did this error tell us about the user's expression?
+			}
+			while (!nums.empty()){ // Reset Calculator
+				nums.pop();
+			}
 		}
 
 		cout << "Enter another equation?(y or n)";

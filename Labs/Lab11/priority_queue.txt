@@ -1,0 +1,35 @@
+Script started on 2023-04-13 01:09:07-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="230" LINES="21"]
+]0;olivarad@OliviasPC: ~/CS-2401/Labs/Lab11[01;32molivarad@OliviasPC[00m:[01;34m~/CS-2401/Labs/Lab11[00m$ ./a.out
+Please provide a chore name: dishes
+
+Please provide a chore priority: 20
+
+Please provide a chore name: StockFridge
+
+Please provide a chore priority: 9
+
+Please provide a chore name: CleanGlass
+
+Please provide a chore priority: 8
+
+Please provide a chore name: FeedDog
+
+Please provide a chore priority: 900
+
+Please provide a chore name: sweeping
+
+Please provide a chore priority: 17
+
+Chore name: FeedDog
+Chore Priority: 900
+Chore name: dishes
+Chore Priority: 20
+Chore name: sweeping
+Chore Priority: 17
+Chore name: StockFridge
+Chore Priority: 9
+Chore name: CleanGlass
+Chore Priority: 8
+]0;olivarad@OliviasPC: ~/CS-2401/Labs/Lab11[01;32molivarad@OliviasPC[00m:[01;34m~/CS-2401/Labs/Lab11[00m$ exit
+
+Script done on 2023-04-13 01:10:37-04:00 [COMMAND_EXIT_CODE="0"]
