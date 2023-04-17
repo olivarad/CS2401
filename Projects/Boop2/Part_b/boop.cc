@@ -744,6 +744,7 @@ void Boop::display_status( ) const{
     cout << "Player 1 cats: " << player1_cats << endl;
     cout << "Player 2 kittens: " << player2_kittens << endl;
     cout << "Player 2 cats: " << player2_cats << endl;
+    cout << "\nMove format: k1a for kitten in 1a\n";
 }
 
 int Boop::evaluate( ) const{
