@@ -42,10 +42,10 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
         }
     }
     ++move_number;
-    booping(piece, row, column);
+    boopPieces(piece, row, column);
 }
 
-void Boop::booping(const char piece, int row, int col){
+void Boop::boopPieces(const char piece, int row, int col){
     string empty = "0";
     string LittleLesbian = "k1";
     string LittleTrans = "k2";
@@ -91,10 +91,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot above the placement is the boards edge
             if (board[row - 1][col].Access_State() != 0){ // Spot above placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch (board[row - 1][col].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break; 
+                    }
                     board[row - 1][col].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row - 1][col].Access_State() < 3){ // Kitten above placement
+                        switch (board[row - 1][col].Access_State()){
+                            case 1:
+                                player1_kittens++;
+                                break;
+                            case 2:
+                                player2_kittens++;
+                                break;
+                        }
                         board[row - 1][col].Space_mutator(empty);
                     }
                 }
@@ -142,10 +164,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot below the placement is the boards edge
             if (board[row + 1][col].Access_State() != 0){ // Spot below placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch(board[row + 1][col].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break; 
+                    }
                     board[row + 1][col].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row + 1][col].Access_State() < 3){ // Kitten below placement
+                        switch(board[row + 1][col].Access_State()){
+                            case 1:
+                                player1_kittens++;
+                                break;
+                            case 2:
+                                player2_kittens++;
+                                break;
+                        }
                         board[row + 1][col].Space_mutator(empty);
                     }
                 }
@@ -193,10 +237,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot left of the placement is the boards edge
             if (board[row][col - 1].Access_State() != 0){ // Spot left of placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch(board[row][col - 1].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break; 
+                    }
                     board[row][col - 1].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row][col - 1].Access_State() < 3){ // Kitten left of placement
+                        switch(board[row][col - 1].Access_State()){
+                            case 1:
+                                player1_kittens++;
+                                break;
+                            case 2:
+                                player2_kittens++;
+                                break;
+                        }
                         board[row][col - 1].Space_mutator(empty);
                     }
                 }
@@ -244,10 +310,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot right of the placement is the boards edge
             if (board[row][col + 1].Access_State() != 0){ // Spot right of placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch(board[row][col + 1].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break; 
+                    }
                     board[row][col + 1].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row][col + 1].Access_State() < 3){ // Kitten left of placement
+                        switch(board[row][col + 1].Access_State()){
+                            case 1:
+                                player1_kittens++;
+                                break;
+                            case 2:
+                                player2_kittens++;
+                                break;
+                        }
                         board[row][col + 1].Space_mutator(empty);
                     }
                 }
@@ -295,10 +383,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot "NE" of the placement is the boards edge
             if (board[row - 1][col + 1].Access_State() != 0){ // Spot "NE" of placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch(board[row - 1][col + 1].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break;
+                    }
                     board[row - 1][col + 1].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row - 1][col + 1].Access_State() < 3){ // Kitten "NE" of placement
+                        switch (board[row - 1][col + 1].Access_State()){
+                            case 1:
+                                player1_kittens++;
+                                break;
+                            case 2:
+                                player2_kittens++;
+                                break;
+                        }
                         board[row - 1][col + 1].Space_mutator(empty);
                     }
                 }
@@ -346,10 +456,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot "SE" of the placement is the boards edge
             if (board[row + 1][col + 1].Access_State() != 0){ // Spot "SE" of placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch (board[row + 1][col + 1].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break;
+                    }
                     board[row + 1][col + 1].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row + 1][col + 1].Access_State() < 3){ // Kitten "SE" of placement
+                        switch (board[row + 1][col + 1].Access_State()){
+                            case 1:
+                                player1_kittens++;
+                                break;
+                            case 2:
+                                player2_kittens++;
+                                break;
+                        }
                         board[row + 1][col + 1].Space_mutator(empty);
                     }
                 }
@@ -397,10 +529,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot "SW" of the placement is the boards edge
             if (board[row + 1][col - 1].Access_State() != 0){ // Spot "SW" of placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch (board[row + 1][col - 1].Access_State()){
+                      case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break;  
+                    }
                     board[row + 1][col - 1].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row + 1][col - 1].Access_State() < 3){ // Kitten "SW" of placement
+                        switch (board[row + 1][col - 1].Access_State()){
+                           case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break; 
+                        }
                         board[row + 1][col - 1].Space_mutator(empty);
                     }
                 }
@@ -448,10 +602,32 @@ void Boop::booping(const char piece, int row, int col){
         else{ // The space 1 spot "NW" of the placement is the boards edge
             if (board[row - 1][col - 1].Access_State() != 0){ // Spot "NW" of placement is not empty
                 if (piece == 'C'){ // Cat
+                    switch (board[row - 1][col - 1].Access_State()){
+                        case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        case 3:
+                            player1_cats++;
+                            break;
+                        case 4:
+                            player2_cats++;
+                            break; 
+                    }
                     board[row - 1][col - 1].Space_mutator(empty);
                 }
                 else{ // Kitten
                     if (board[row - 1][col - 1].Access_State() < 3){ // Kitten "NW" of placement
+                        switch (board[row - 1][col - 1].Access_State()){
+                            case 1:
+                            player1_kittens++;
+                            break;
+                        case 2:
+                            player2_kittens++;
+                            break;
+                        }
                         board[row - 1][col - 1].Space_mutator(empty);
                     }
                 }
@@ -468,7 +644,7 @@ void Boop::promotion(){ // Promotes 3 matching kittens in a row or 8 matching ki
 void Boop::restart( ){
     move_number = 0; 
     player1_kittens = player2_kittens = 8;
-    player1_cats = player2_cats = 8;
+    player1_cats = player2_cats = 0;
 }
 
 game* Boop::clone( ) const{
