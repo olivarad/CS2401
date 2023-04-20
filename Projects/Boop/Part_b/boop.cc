@@ -42,7 +42,6 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
         }
     }
     boopPieces(piece, row, column);
-    display_status();
     promotion();
     ++move_number;
 }
@@ -639,9 +638,10 @@ void Boop::boopPieces(const char piece, int row, int col){
 }
 
 void Boop::promotion(){ // Promotes 3 matching kittens in a row or 8 matching kittens on a board to one cat
+    if ((player1_kittens == 0 && player1_cats == 0) || (player2_kittens == 0 && player2_cats == 0)){ // PLayer1 may promote 1 kitten to a cat by removing it from the board
     string target_space = "";
     string empty = "0";
-    if ((player1_kittens == 0 && player1_cats == 0) || (player2_kittens == 0 && player2_cats == 0)){ // PLayer1 may promote 1 kitten to a cat by removing it from the board
+    display_status();
         int empty_promotion = 0;
         do {
             cout << "Please provide a space (number, letter) with one of your kittens to be cleared in order to receive a cat: ";
@@ -775,7 +775,6 @@ void Boop::display_status( ) const{
     cout << "Player 1 cats: " << player1_cats << endl;
     cout << "Player 2 kittens: " << player2_kittens << endl;
     cout << "Player 2 cats: " << player2_cats << endl;
-    cout << "\nMove format: k1a for kitten in 1a\n";
 }
 
 int Boop::evaluate( ) const{
