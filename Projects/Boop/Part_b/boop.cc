@@ -41,8 +41,10 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
             player2_cats--;
         }
     }
-    ++move_number;
     boopPieces(piece, row, column);
+    display_status();
+    promotion();
+    ++move_number;
 }
 
 void Boop::boopPieces(const char piece, int row, int col){
@@ -637,13 +639,42 @@ void Boop::boopPieces(const char piece, int row, int col){
 }
 
 void Boop::promotion(){ // Promotes 3 matching kittens in a row or 8 matching kittens on a board to one cat
-
+    string target_space = "";
+    string empty = "0";
+    if ((player1_kittens == 0 && player1_cats == 0) || (player2_kittens == 0 && player2_cats == 0)){ // PLayer1 may promote 1 kitten to a cat by removing it from the board
+        int empty_promotion = 0;
+        do {
+            cout << "Please provide a space (number, letter) with one of your kittens to be cleared in order to receive a cat: ";
+            cin >> target_space;
+            cout << endl;
+            if (target_space.length() == 2){
+                int column = (toupper(target_space.substr(0, 1)[0])) - 49; // Sets column to track the requested column
+                int row = (toupper(target_space.substr(1,1)[0])) - 65; // Sets row to track the requested row
+                if ((column > -1 && column < 6) && (row > -1 && row < 6)){// coordinates exsist on the board
+                    if (player1_kittens == 0){
+                        if (board[row][column].Access_State() == 1){
+                            board[row][column].Space_mutator(empty);
+                            player1_cats++;
+                            empty_promotion++;
+                        }
+                    }
+                    else{
+                        if (board[row][column].Access_State() == 2){
+                            board[row][column].Space_mutator(empty);
+                            player2_cats++;
+                            empty_promotion++;
+                        }
+                    }
+                }
+            }
+        } while (empty_promotion == 0);
+    }
 }
 
 // Restart the game from the beginning:
 void Boop::restart( ){
     move_number = 0; 
-    player1_kittens = player2_kittens = 8;
+    player1_kittens = player2_kittens = 1;
     player1_cats = player2_cats = 0;
 }
 
