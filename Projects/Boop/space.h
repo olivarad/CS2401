@@ -3,17 +3,21 @@
 
 #include <string>
 
-namespace main_savitch_14
-{
-	class Space:private Boop{
-	public:
-		Space(){space_state = "0";} // Default constructor (ALL SPACES INITIALIZED TO EMPTY)
-		void state_update(std::string user_move); // State mutator funciton
-		std::string get_state(){return space_state;} // State accessor function
 
-	protected:
-		std::string space_state;
-	};
-}
+class Space{
+    public:
+        // constructor (Sets space to empty)
+        Space();
+
+        //Space mutator function (Move format is substring of full move with only piece information)
+        void Space_mutator(std::string& move);
+
+        //Space Accessor
+        int Access_State() const;
+
+    private:
+        // State variable 0 is empty 1 is k1, 2 is k2, 3 is c1, 4 is c2
+        int state;
+};
 
 #endif

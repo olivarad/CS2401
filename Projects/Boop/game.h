@@ -59,7 +59,7 @@ namespace main_savitch_14
 		// Compute all the moves that the next player can make:
 		virtual void compute_moves(std::queue<std::string>& moves) const = 0;
 		// Display the status of the current game:
-		virtual void display_status( ) const = 0;
+		virtual void display_status( ) = 0;
 		// Evaluate a board position:
 		// NOTE: positive values are good for the computer.
 		virtual int evaluate( ) const = 0;
@@ -79,6 +79,7 @@ namespace main_savitch_14
 		int eval_with_lookahead(int look_ahead, int beat_this);
 		void make_computer_move( );
 		void make_human_move( );
-   };
+    };
 }
+
 #endif
