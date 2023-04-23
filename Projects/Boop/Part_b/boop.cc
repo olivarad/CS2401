@@ -17,7 +17,7 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
     char piece = toupper(move.substr(0, 1)[0]); // Sets piece to track the piece type
     int column = (toupper(move.substr(1, 1)[0])) - 49; // Sets column to track the requested column
     int row = (toupper(move.substr(2,1)[0])) - 65; // Sets row to track the requested row
-    if (move_number % 2 == 0){ // Player 1 move
+    if (next_mover() == HUMAN){ // Player 1 move
         if (piece == 'K'){ // Player 1 kitten
             string board_move = "k1";
             board[row][column].Space_mutator(board_move);
@@ -43,7 +43,7 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
     }
     boopPieces(piece, row, column);
     promotion();
-    ++move_number;
+    game::make_move(move);
 }
 
 void Boop::boopPieces(const char piece, int row, int col){
@@ -647,19 +647,20 @@ void Boop::promotion(){ // Promotes 3 matching kittens in a row or 8 matching ki
             cout << "Please provide a space (number, letter) with one of your kittens to be cleared in order to receive a cat: ";
             cin >> target_space;
             cout << endl;
+            cin.ignore();
             if (target_space.length() == 2){
                 int column = (toupper(target_space.substr(0, 1)[0])) - 49; // Sets column to track the requested column
                 int row = (toupper(target_space.substr(1,1)[0])) - 65; // Sets row to track the requested row
                 if ((column > -1 && column < 6) && (row > -1 && row < 6)){// coordinates exsist on the board
-                    if (player1_kittens == 0){
-                        if (board[row][column].Access_State() == 1){
+                    if (next_mover() == HUMAN){
+                        if (board[row][column].Access_State() == 1 || board[row][column].Access_State() == 3){
                             board[row][column].Space_mutator(empty);
                             player1_cats++;
                             empty_promotion++;
                         }
                     }
-                    else{
-                        if (board[row][column].Access_State() == 2){
+                    else if (next_mover() != HUMAN){
+                        if (board[row][column].Access_State() == 2 || board[row][column].Access_State() == 4){
                             board[row][column].Space_mutator(empty);
                             player2_cats++;
                             empty_promotion++;
@@ -673,7 +674,7 @@ void Boop::promotion(){ // Promotes 3 matching kittens in a row or 8 matching ki
 
 // Restart the game from the beginning:
 void Boop::restart( ){
-    move_number = 0; 
+    game::restart();
     player1_kittens = player2_kittens = 1;
     player1_cats = player2_cats = 0;
 }
@@ -775,6 +776,7 @@ void Boop::display_status( ) const{
     cout << "Player 1 cats: " << player1_cats << endl;
     cout << "Player 2 kittens: " << player2_kittens << endl;
     cout << "Player 2 cats: " << player2_cats << endl;
+    cout << "To place a kitten in 1a use \"k1a\"\n";
 }
 
 int Boop::evaluate( ) const{
@@ -795,7 +797,7 @@ bool Boop::is_legal(const std::string& move) const{ // verify that the player ha
         return 0;
     }
 
-    if (move_number % 2 == 0){ // Player 1 move
+    if (next_mover() == HUMAN){ // Player 1 move
         if (piece == 'K' && player1_kittens == 0){ // No pieces to place
             return 0;
         }
