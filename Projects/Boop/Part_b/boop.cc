@@ -672,17 +672,17 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
 
     for (int c = 0; c < 5; c++){ // Itterates through the columns
     int consecutive = 0;
-    bool concecutive_cats = 0;
+    bool consecutive_cats = 0;
     int previous = board[0][c].Access_State();
     if (previous != 0){
         consecutive = 1;
         if (previous == 3 || previous == 4){
-        concecutive_cats = 1;
+        consecutive_cats = 1;
         }
     }
         for (int r = 1; r < 6; r++){ // Itterates through the rows
             if (consecutive == 3){
-                if (concecutive_cats == 0){ // Promotion
+                if (consecutive_cats == 0){ // Promotion
                     cout << "\npromotion\n";
                 }
                 else{ // Victory
@@ -694,16 +694,15 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                 break;
             }
             if (r <= 3){
-                if (previous == 1)
-                {
+                if (previous == 1){
                     previous = board[r][c].Access_State();
                     if (previous == 1 || previous == 3){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -711,11 +710,11 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     previous = board[r][c].Access_State();
                     if (previous == 2 || previous == 4){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -724,15 +723,15 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 1:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 3:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else if (previous == 4){
@@ -740,34 +739,33 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 2:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 4:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else{
                     previous = 0;
                     consecutive = 0;
-                    concecutive_cats = 0;
+                    consecutive_cats = 0;
                 }
             }
             else if (r > 3 && consecutive < 0){ // Last chance to get 3 consecutive pieces
-                if (previous == 1)
-                {
+                if (previous == 1){
                     previous = board[r][c].Access_State();
                     if (previous == 1 || previous == 3){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -775,11 +773,11 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     previous = board[r][c].Access_State();
                     if (previous == 2 || previous == 4){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -788,15 +786,15 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 1:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 3:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else if (previous == 4){
@@ -804,21 +802,21 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 2:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 4:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else{
                     previous = 0;
                     consecutive = 0;
-                    concecutive_cats = 0;
+                    consecutive_cats = 0;
                 }
             }
         }
@@ -826,17 +824,17 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
 
     for (int r = 0; r < 5; r++){ // Itterates through the columns
     int consecutive = 0;
-    bool concecutive_cats = 0;
+    bool consecutive_cats = 0;
     int previous = board[r][0].Access_State();
     if (previous != 0){
         consecutive = 1;
         if (previous == 3 || previous == 4){
-        concecutive_cats = 1;
+        consecutive_cats = 1;
         }
     }
         for (int c = 1; c < 6; c++){ // Itterates through the rows
             if (consecutive == 3){
-                if (concecutive_cats == 0){ // Promotion
+                if (consecutive_cats == 0){ // Promotion
                     cout << "\npromotion\n";
                 }
                 else{ // Victory
@@ -848,16 +846,15 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                 break;
             }
             if (c <= 3){
-                if (previous == 1)
-                {
+                if (previous == 1){
                     previous = board[r][c].Access_State();
                     if (previous == 1 || previous == 3){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -865,11 +862,11 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     previous = board[r][c].Access_State();
                     if (previous == 2 || previous == 4){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -878,15 +875,15 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 1:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 3:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else if (previous == 4){
@@ -894,34 +891,33 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 2:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 4:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else{
                     previous = 0;
                     consecutive = 0;
-                    concecutive_cats = 0;
+                    consecutive_cats = 0;
                 }
             }
             else if (c > 3 && consecutive < 0){ // Last chance to get 3 consecutive pieces
-                if (previous == 1)
-                {
+                if (previous == 1){
                     previous = board[r][c].Access_State();
                     if (previous == 1 || previous == 3){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -929,11 +925,11 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     previous = board[r][c].Access_State();
                     if (previous == 2 || previous == 4){
                         consecutive++;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
                     }
                     else{
                         consecutive = 0;
-                        concecutive_cats = 0;
+                        consecutive_cats = 0;
 
                     }
                 }
@@ -942,15 +938,15 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 1:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 3:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else if (previous == 4){
@@ -958,23 +954,115 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     switch (previous){
                         case 2:
                             consecutive++;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                             break;
                         case 4:
                             consecutive++;
-                            concecutive_cats = 1;
+                            consecutive_cats = 1;
                             break;
                         default:
                             consecutive = 0;
-                            concecutive_cats = 0;
+                            consecutive_cats = 0;
                     }
                 }
                 else{
                     previous = 0;
                     consecutive = 0;
-                    concecutive_cats = 0;
+                    consecutive_cats = 0;
                 }
             }
+        }
+    }
+    
+    for (int r = 1; r < 4; r++){
+
+        int consecutive = 0;
+        bool consecutive_cats = 0;
+        int previous = board[0][0].Access_State();
+        if (previous != 0){
+            consecutive = 1;
+            if (previous == 3 || previous == 4){
+            consecutive_cats = 1;
+            }
+        }
+
+        for (int c = 1; (c + r) < 5; c++){
+
+            if (consecutive == 3){
+                if (consecutive_cats == 0){ // Promotion
+                    cout << "\npromotion\n";
+                }
+                else{ // Victory
+                    cout << "\nvictory\n";
+                }
+                return;
+            }
+
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 3){
+                    consecutive++;
+                    consecutive_cats = 0;
+                }
+                else{
+                    consecutive = 0;
+                    consecutive_cats = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2 || previous == 4){
+                    consecutive++;
+                    consecutive_cats = 0;
+                }
+                else{
+                    consecutive = 0;
+                    consecutive_cats = 0;
+                }
+            }
+            else if (previous == 3){
+                previous = board[r][c].Access_State();
+                switch (previous){
+                    case 1:
+                        consecutive++;
+                        consecutive_cats = 0;
+                        break;
+                    case 3:
+                        consecutive++;
+                        consecutive_cats = 1;
+                        break;
+                    default:
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                switch (previous){
+                    case 2:
+                        consecutive++;
+                        consecutive_cats = 0;
+                        break;
+                    case 4:
+                        consecutive++;
+                        consecutive_cats = 1;
+                        break;
+                    default:
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            else{
+                previous = 0;
+                consecutive = 0;
+                consecutive_cats = 0;
+            }
+            if (c + r == 5){
+                r = 0;
+            }
+            else{
+                r++;
+            }   
         }
     }
 
