@@ -1320,6 +1320,74 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
 
 }
 
+void Boop::promote(int player){
+    int direction = 0;
+    string spaces;
+    int column[3];
+    int row[3];
+
+    do{
+        cout << "Please provide 3 pieces worthy of promotion in a format such as this \"1a 1b 1c\" followed by the enter/return key\n";
+        cout << "The spaces should be entered starting with an edge, then the middle, followed by the other edge\n";
+        cin.ignore();
+        getline(spaces, cin);
+        if (space.length() != 8){ // Bad length
+            cout << "Bad length\n";
+            continue;
+        }
+        for (int i = 0; i < 3; i++){
+            column[i] = (toupper(spaces.substr(3 * i, 1)[0])) - 49; // Sets column to track the requested column
+            row[i] = (toupper(move.substr(3* i + 1,1)[0])) - 65; // Sets row to track the requested row
+            if (column[i] < 0 || column[i] > 5){ // Bad column
+                cout << "Bad column\n";
+                break;
+                continue;
+            }
+            if (row[i] < 0 || row[i] > 5){ // Bad column
+                cout << "Bar row\n";
+                break;
+                continue;
+            }
+        }
+        if (column[0] == column[1] && row[0] - 1 == row[1]){ // Pieces are above piece 1
+
+        }
+        else if (column[0] + 1 == column[1] && row[0] - 1 == row[1]){ // Pieces are "NE" of piece 1
+
+        }
+        else if (column[0] + 1 == column[1] && row[0] == row[1]){ // Pieces are right of piece 1
+
+        }
+        else if (column[0] + 1 == column[1] && row[0] + 1 == row[1]){ // Pieces are "SE" of piece 1
+
+        }
+        else if (column[0] == column[1] && row[0] + 1 == row[1]){ // Pieces are below piece 1
+
+        }
+        else if (column[0] - 1 == column[1] && row[0] + 1 == row[1]){ // Pieces are "SW" of piece 1
+
+        }
+        else if (column[0] - 1 == column[1] && row[0] == row[1]){ // Pieces are left of piece 1
+
+        }
+        else if (column[0] - 1 == column[1] && row[0] - 1 == row[1]){ // Pieces are "NW"of piece 1
+
+        }
+        else{ // Invalid piece combos
+            continue;
+        }
+        for (int i = 0; i < 3; i++){ // Checks that the spaces are adjacent and all belong to one player
+
+        }
+    }while (true);
+    if (player == 1){
+
+    }
+    else{
+        
+    }
+}
+
 // Restart the game from the beginning:
 void Boop::restart( ){
     game::restart();
