@@ -1330,14 +1330,14 @@ void Boop::promote(int player){
         cout << "Please provide 3 pieces worthy of promotion in a format such as this \"1a 1b 1c\" followed by the enter/return key\n";
         cout << "The spaces should be entered starting with an edge, then the middle, followed by the other edge\n";
         cin.ignore();
-        getline(spaces, cin);
-        if (space.length() != 8){ // Bad length
+        getline(cin, spaces);
+        if (spaces.length() != 8){ // Bad length
             cout << "Bad length\n";
             continue;
         }
         for (int i = 0; i < 3; i++){
             column[i] = (toupper(spaces.substr(3 * i, 1)[0])) - 49; // Sets column to track the requested column
-            row[i] = (toupper(move.substr(3* i + 1,1)[0])) - 65; // Sets row to track the requested row
+            row[i] = (toupper(spaces.substr(3* i + 1,1)[0])) - 65; // Sets row to track the requested row
             if (column[i] < 0 || column[i] > 5){ // Bad column
                 cout << "Bad column\n";
                 break;
@@ -1350,28 +1350,28 @@ void Boop::promote(int player){
             }
         }
         if (column[0] == column[1] && row[0] - 1 == row[1]){ // Pieces are above piece 1
-
+            direction = 0;
         }
         else if (column[0] + 1 == column[1] && row[0] - 1 == row[1]){ // Pieces are "NE" of piece 1
-
+            direction = 1;
         }
         else if (column[0] + 1 == column[1] && row[0] == row[1]){ // Pieces are right of piece 1
-
+            direction = 2;
         }
         else if (column[0] + 1 == column[1] && row[0] + 1 == row[1]){ // Pieces are "SE" of piece 1
-
+            direction = 3;
         }
         else if (column[0] == column[1] && row[0] + 1 == row[1]){ // Pieces are below piece 1
-
+            direction = 4;
         }
         else if (column[0] - 1 == column[1] && row[0] + 1 == row[1]){ // Pieces are "SW" of piece 1
-
+            direction = 5;
         }
         else if (column[0] - 1 == column[1] && row[0] == row[1]){ // Pieces are left of piece 1
-
+            direction = 6;
         }
         else if (column[0] - 1 == column[1] && row[0] - 1 == row[1]){ // Pieces are "NW"of piece 1
-
+            direction = 7;
         }
         else{ // Invalid piece combos
             continue;
