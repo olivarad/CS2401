@@ -1145,6 +1145,179 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
             c++;
         }
     }
+
+    for (int R = 0; R < 4; R++){
+        int r = R;
+        int consecutive = 0;
+        bool consecutive_cats = 0;
+        int previous = 0;
+        for (int c = 5; c > (R - 2); c--){
+            if (consecutive == 3){
+                if (consecutive_cats == 0){ // Promotion
+                    cout << "\npromotion\n";
+                }
+                else{ // Victory
+                    cout << "\nvictory\n";
+                }
+                return;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 3){
+                    consecutive++;
+                    consecutive_cats = 0;
+                }
+                else{
+                    consecutive = 0;
+                    consecutive_cats = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2 || previous == 4){
+                    consecutive++;
+                    consecutive_cats = 0;
+                }
+                else{
+                    consecutive = 0;
+                    consecutive_cats = 0;
+                }
+            }
+            else if (previous == 3){
+                previous = board[r][c].Access_State();
+                switch (previous){
+                    case 1:
+                        consecutive++;
+                        consecutive_cats = 0;
+                        break;
+                    case 3:
+                        consecutive++;
+                        consecutive_cats = 1;
+                        break;
+                    default:
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                switch (previous){
+                    case 2:
+                        consecutive++;
+                        consecutive_cats = 0;
+                        break;
+                    case 4:
+                        consecutive++;
+                        consecutive_cats = 1;
+                        break;
+                    default:
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous != 0){
+                    consecutive = 1;
+                    if (previous == 3 || previous == 4){
+                        consecutive_cats = 0;
+                    }
+                }
+                else{
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            r++;
+        }
+    }
+
+    for (int C = 5; C > 1; C--){
+        int c = C;
+        int consecutive = 0;
+        bool consecutive_cats = 0;
+        int previous = 0;
+        for (int r = 0; r < (6 - C); r++){
+            if (consecutive == 3){
+                if (consecutive_cats == 0){ // Promotion
+                    cout << "\npromotion\n";
+                }
+                else{ // Victory
+                    cout << "\nvictory\n";
+                }
+                return;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 3){
+                    consecutive++;
+                    consecutive_cats = 0;
+                }
+                else{
+                    consecutive = 0;
+                    consecutive_cats = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2 || previous == 4){
+                    consecutive++;
+                    consecutive_cats = 0;
+                }
+                else{
+                    consecutive = 0;
+                    consecutive_cats = 0;
+                }
+            }
+            else if (previous == 3){
+                previous = board[r][c].Access_State();
+                switch (previous){
+                    case 1:
+                        consecutive++;
+                        consecutive_cats = 0;
+                        break;
+                    case 3:
+                        consecutive++;
+                        consecutive_cats = 1;
+                        break;
+                    default:
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                switch (previous){
+                    case 2:
+                        consecutive++;
+                        consecutive_cats = 0;
+                        break;
+                    case 4:
+                        consecutive++;
+                        consecutive_cats = 1;
+                        break;
+                    default:
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous != 0){
+                    consecutive = 1;
+                    if (previous == 3 || previous == 4){
+                        consecutive_cats = 0;
+                    }
+                }
+                else{
+                        consecutive = 0;
+                        consecutive_cats = 0;
+                }
+            }
+            c--;
+        }
+    }
+
 }
 
 // Restart the game from the beginning:
