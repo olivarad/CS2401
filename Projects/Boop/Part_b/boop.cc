@@ -1500,7 +1500,7 @@ void Boop::display_status( ) const{
     cout << "To place a kitten in 1a use \"k1a\"\n";
 }
 
-int Boop::evaluate( ) const{
+int Boop::evaluate( ) const{ // -1 is player 1, 0 is tie, 1 is player 2
     return 0; // Temp
 }
 
