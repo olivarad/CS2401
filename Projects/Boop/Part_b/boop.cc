@@ -686,7 +686,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     promote();
                 }
                 else{ // Victory
-                    cout << "\nvictory\n";
+                    game_over = 1;
                 }
                 return;
             }
@@ -838,7 +838,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     promote();
                 }
                 else{ // Victory
-                    cout << "\nvictory\n";
+                    game_over = 1;
                 }
                 return;
             }
@@ -985,7 +985,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     promote();
                 }
                 else{ // Victory
-                    cout << "\nvictory\n";
+                    game_over = 1;
                 }
                 return;
             }
@@ -1071,7 +1071,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     promote();
                 }
                 else{ // Victory
-                    cout << "\nvictory\n";
+                    game_over = 1;
                 }
                 return;
             }
@@ -1157,7 +1157,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     promote();
                 }
                 else{ // Victory
-                    cout << "\nvictory\n";
+                    game_over = 1;
                 }
                 return;
             }
@@ -1243,7 +1243,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
                     promote();
                 }
                 else{ // Victory
-                    cout << "\nvictory\n";
+                    game_over = 1;
                 }
                 return;
             }
@@ -1395,8 +1395,9 @@ void Boop::promote(){
 // Restart the game from the beginning:
 void Boop::restart( ){
     game::restart();
+    game_over = 0;
     player1_kittens = player2_kittens = 8;
-    player1_cats = player2_cats = 8;
+    player1_cats = player2_cats = 0;
 }
 
 game* Boop::clone( ) const{
@@ -1504,7 +1505,12 @@ int Boop::evaluate( ) const{
 }
 
 bool Boop::is_game_over( ) const{
-    return 0; // Temp
+    if (game_over == 0){
+        return 0;
+    }
+    else{
+        return 1;
+    }
 }
 
 bool Boop::is_legal(const std::string& move) const{ // verify that the player has these pieces

@@ -17,6 +17,7 @@ namespace main_savitch_14
             void boopPieces(const char piece, int row, int col);
 
             void promotion(); // Promote 3 kittens to cats or 8 on a board to one cat
+            
             void promote();
 
             // Restart the game from the beginning:
@@ -38,7 +39,7 @@ namespace main_savitch_14
         private:
             Space board[6][6]; // 6X6 board of Space objects found in space.h
 
-            int move_number;
+            bool game_over;
 
             int player1_kittens;
             int player2_kittens;
