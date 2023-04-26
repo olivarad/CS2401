@@ -17,7 +17,7 @@ namespace main_savitch_14
             void boopPieces(const char piece, int row, int col);
 
             void promotion(); // Promote 3 kittens to cats or 8 on a board to one cat
-            void promote(int player);
+            void promote();
 
             // Restart the game from the beginning:
             void restart( );

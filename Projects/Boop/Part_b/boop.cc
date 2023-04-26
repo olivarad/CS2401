@@ -683,7 +683,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
         for (int r = 1; r < 6; r++){ // Itterates through the rows
             if (consecutive == 3){
                 if (consecutive_cats == 0){ // Promotion
-                    cout << "\npromotion\n";
+                    promote();
                 }
                 else{ // Victory
                     cout << "\nvictory\n";
@@ -835,7 +835,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
         for (int c = 1; c < 6; c++){ // Itterates through the rows
             if (consecutive == 3){
                 if (consecutive_cats == 0){ // Promotion
-                    cout << "\npromotion\n";
+                    promote();
                 }
                 else{ // Victory
                     cout << "\nvictory\n";
@@ -982,7 +982,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
         for (int c = 0; c < (7 - R); c++){
             if (consecutive == 3){
                 if (consecutive_cats == 0){ // Promotion
-                    cout << "\npromotion\n";
+                    promote();
                 }
                 else{ // Victory
                     cout << "\nvictory\n";
@@ -1068,7 +1068,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
         for (int r = 0; r < (7 - C); r++){
             if (consecutive == 3){
                 if (consecutive_cats == 0){ // Promotion
-                    cout << "\npromotion\n";
+                    promote();
                 }
                 else{ // Victory
                     cout << "\nvictory\n";
@@ -1154,7 +1154,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
         for (int c = 5; c > (R - 2); c--){
             if (consecutive == 3){
                 if (consecutive_cats == 0){ // Promotion
-                    cout << "\npromotion\n";
+                    promote();
                 }
                 else{ // Victory
                     cout << "\nvictory\n";
@@ -1240,7 +1240,7 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
         for (int r = 0; r < (6 - C); r++){
             if (consecutive == 3){
                 if (consecutive_cats == 0){ // Promotion
-                    cout << "\npromotion\n";
+                    promote();
                 }
                 else{ // Victory
                     cout << "\nvictory\n";
@@ -1320,17 +1320,18 @@ void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching ki
 
 }
 
-void Boop::promote(int player){
-    int direction = 0;
+void Boop::promote(){
+    display_status();
+    bool loop = 1;
+    string empty = "0";
     string spaces;
     int column[3];
     int row[3];
 
     do{
-        cout << "Please provide 3 pieces worthy of promotion in a format such as this \"1a 1b 1c\" followed by the enter/return key\n";
+        cout << "\nPlease provide 3 pieces worthy of promotion in a format such as this \"1a-1b-1c\" followed by the enter/return key\n";
         cout << "The spaces should be entered starting with an edge, then the middle, followed by the other edge\n";
-        cin.ignore();
-        getline(cin, spaces);
+        cin >> spaces;
         if (spaces.length() != 8){ // Bad length
             cout << "Bad length\n";
             continue;
@@ -1344,48 +1345,51 @@ void Boop::promote(int player){
                 continue;
             }
             if (row[i] < 0 || row[i] > 5){ // Bad column
-                cout << "Bar row\n";
+                cout << "Bad row\n";
                 break;
                 continue;
             }
         }
-        if (column[0] == column[1] && row[0] - 1 == row[1]){ // Pieces are above piece 1
-            direction = 0;
+        if (column[0] == column[1] && column[1] == column[2] && row[0] - 1 == row[1] && row[1] - 1 == row[2]){ // Pieces are above piece 1
         }
-        else if (column[0] + 1 == column[1] && row[0] - 1 == row[1]){ // Pieces are "NE" of piece 1
-            direction = 1;
+        else if (column[0] + 1 == column[1] && column[1] + 1 == column[2] && row[0] - 1 == row[1] && row[1] - 1 == row[2]){ // Pieces are "NE" of piece 1
         }
-        else if (column[0] + 1 == column[1] && row[0] == row[1]){ // Pieces are right of piece 1
-            direction = 2;
+        else if (column[0] + 1 == column[1] && column[1] + 1 == column[2] && row[0] == row[1] && row[1] == row[2]){ // Pieces are right of piece 1
         }
-        else if (column[0] + 1 == column[1] && row[0] + 1 == row[1]){ // Pieces are "SE" of piece 1
-            direction = 3;
+        else if (column[0] + 1 == column[1] && column[1] + 1 == column[2] && row[0] + 1 == row[1] && row[1] + 1 == row[2]){ // Pieces are "SE" of piece 1
         }
-        else if (column[0] == column[1] && row[0] + 1 == row[1]){ // Pieces are below piece 1
-            direction = 4;
+        else if (column[0] == column[1] && column[1] == column[2] && row[0] + 1 == row[1] && row[1] + 1 == row[2]){ // Pieces are below piece 1
         }
-        else if (column[0] - 1 == column[1] && row[0] + 1 == row[1]){ // Pieces are "SW" of piece 1
-            direction = 5;
+        else if (column[0] - 1 == column[1] && column[1] - 1 == column[2] && row[0] + 1 == row[1] && row[1] + 1 == row[2]){ // Pieces are "SW" of piece 1
         }
-        else if (column[0] - 1 == column[1] && row[0] == row[1]){ // Pieces are left of piece 1
-            direction = 6;
+        else if (column[0] - 1 == column[1] && column[1] - 1 == column[2] &&  row[0] == row[1] && row[1] == row[2]){ // Pieces are left of piece 1
         }
-        else if (column[0] - 1 == column[1] && row[0] - 1 == row[1]){ // Pieces are "NW"of piece 1
-            direction = 7;
+        else if (column[0] - 1 == column[1] && column[1] - 1 == column[2] && row[0] - 1 == row[1] && row[1] - 1 == row[2]){ // Pieces are "NW"of piece 1
         }
         else{ // Invalid piece combos
             continue;
         }
-        for (int i = 0; i < 3; i++){ // Checks that the spaces are adjacent and all belong to one player
-
-        }
-    }while (true);
-    if (player == 1){
-
-    }
-    else{
-        
-    }
+            if ((board[row[0]][column[0]].Access_State() == 1 || board[row[0]][column[0]].Access_State() == 3) && (board[row[1]][column[1]].Access_State() == 1 || board[row[1]][column[1]].Access_State() == 3) && (board[row[2]][column[2]].Access_State() == 1 || board[row[2]][column[2]].Access_State() == 3)){ // Worthy of Promotion
+                for (int i = 0; i < 3; i++){
+                    board[row[i]][column[i]].Space_mutator(empty);
+                }
+                player1_cats += 3;
+                loop = 0;
+            }
+            else if ((board[row[0]][column[0]].Access_State() == 2 || board[row[0]][column[0]].Access_State() == 4) && (board[row[1]][column[1]].Access_State() == 2 || board[row[1]][column[1]].Access_State() == 4) && (board[row[2]][column[2]].Access_State() == 2 || board[row[2]][column[2]].Access_State() == 4)){ // Worthy of Promotion
+                for (int i = 0; i < 3; i++){
+                    board[row[i]][column[i]].Space_mutator(empty);
+                }
+                player2_cats += 3;
+                loop = 0;
+            }
+            else{
+                cout << "These pieces do not belong to the same player or at least one space is empty\n";
+                continue;
+            }
+    }while (loop == 1);
+    cin.ignore();
+    promotion();
 }
 
 // Restart the game from the beginning:
