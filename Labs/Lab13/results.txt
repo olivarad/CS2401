@@ -1,0 +1,12 @@
+Script started on 2023-04-28 18:51:56-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="154" LINES="20"]
+]0;olivarad@OliviasPC: ~/CS-2401/Labs/Lab13[01;32molivarad@OliviasPC[00m:[01;34m~/CS-2401/Labs/Lab13[00m$ ./a.out
+Please provide a target name to check for duplicates: Matthew
+Your search name appears 7 times.
+Number of names after Matthew: 51
+]0;olivarad@OliviasPC: ~/CS-2401/Labs/Lab13[01;32molivarad@OliviasPC[00m:[01;34m~/CS-2401/Labs/Lab13[00m$ ./a.out
+Please provide a target name to check for duplicates: Jessica
+Your search name appears 1 times.
+Number of names after Jessica: 90
+]0;olivarad@OliviasPC: ~/CS-2401/Labs/Lab13[01;32molivarad@OliviasPC[00m:[01;34m~/CS-2401/Labs/Lab13[00m$ exit
+
+Script done on 2023-04-28 18:52:21-04:00 [COMMAND_EXIT_CODE="0"]

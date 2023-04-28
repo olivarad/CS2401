@@ -23,6 +23,20 @@ struct Bnode{
 	Bnode* right;
 };
 
+int greaterNames(Bnode* root, int count, string target){
+	if (root != NULL){
+		if (root -> data > target){
+			count++;
+		}
+		count += (greaterNames(root -> left, 0, target));
+	    count += (greaterNames(root -> right, 0, target));
+	}
+	else{
+		return count;
+	}
+	return count;
+}
+
 int repeatNames(Bnode* root, int count, string target){
 	if (root != NULL){
 		if (root -> data == target){
@@ -85,6 +99,7 @@ int main(){
 	string target;
 	cout << "Please provide a target name to check for duplicates: ";
 	cin >> target;
-	cout << repeatNames(root, 0, target) << endl;
+	cout << "Your search name appears " << repeatNames(root, 0, target) << " times.\n";
+	cout << "Number of names after " << target << ": " << greaterNames(root, 0, target) << endl;
 	return 0;
 }
