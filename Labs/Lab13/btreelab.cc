@@ -23,6 +23,20 @@ struct Bnode{
 	Bnode* right;
 };
 
+int repeatNames(Bnode* root, int count, string target){
+	if (root != NULL){
+		if (root -> data == target){
+			count++;
+		}
+		count += (repeatNames(root -> left, 0, target));
+	    count += (repeatNames(root -> right, 0, target));
+	}
+	else{
+		return count;
+	}
+	return count;
+}
+
 void inorder(Bnode* root){
 	if(root != NULL){
 		inorder(root -> left);
@@ -67,6 +81,10 @@ int main(){
 		}
 		fin.close();
 	}
-	inorder(root);
+	//inorder(root);
+	string target;
+	cout << "Please provide a target name to check for duplicates: ";
+	cin >> target;
+	cout << repeatNames(root, 0, target) << endl;
 	return 0;
 }
