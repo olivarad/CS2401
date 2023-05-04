@@ -42,12 +42,11 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
         }
     }
     boopPieces(piece, row, column);
-    rowOf3(); // Cals rowOf3 function
+    rowOf3(move); // Cals rowOf3 function
     all8();
-    game::make_move(move);
 }
 
-void Boop::rowOf3(){ // Check for victory then promote 3 kittens in a row
+void Boop::rowOf3(string move){ // Check for victory then promote 3 kittens in a row
     // Checking for cats
     for (int c = 0; c < 6; c++){ // Itterates through the columns
         int consecutive = 0;
@@ -355,8 +354,14 @@ void Boop::rowOf3(){ // Check for victory then promote 3 kittens in a row
         }
         for (int r = 1; r < 6; r++){ // Itterates through the rows
             if (consecutive == 3){
-                promote();
-                return;
+                if (next_mover() == HUMAN){
+                    promote();
+                    return;
+                }
+                else{
+                    computerRowOf3 = 1;
+                    return;
+                }
             }
             if (r == 6){
                 break;
@@ -1293,25 +1298,44 @@ void Boop::promote(){
             }
     }while (loop == 1);
     cin.ignore();
-    rowOf3();
 }
 
 // Restart the game from the beginning:
 void Boop::restart(){
     game::restart();
     winner = 0;
+    computerMoveTurn = 0;
+    computerRowOf3 = 0;
+    computer8 = 0;
     game_over = 0;
     player1_kittens = player2_kittens = 8;
     player1_cats = player2_cats = 0;
 }
 
 game* Boop::clone( ) const{
-    game* temp;
-    return temp;
+    return new Boop(*this);
 }
 
 void Boop::compute_moves(std::queue<std::string>& moves) const{
-
+    string computerMove;
+    for (int r = 65; r <= 70; r++){
+        for (int c = 1; c <= 6; c++){
+            computerMove = "k" + c + r;
+            if (is_legal(computerMove) == 1){
+                moves.push(computerMove);
+            }
+            computerMove = "";
+        }
+    }
+    for (int r = 65; r <= 70; r++){
+        for (int c = 1; c <= 6; c++){
+            computerMove = "c" + c + r;
+            if (is_legal(computerMove) == 1){
+                moves.push(computerMove);
+            }
+            computerMove = "";
+        }
+    }
 }
 
 void Boop::display_status( ) const{
@@ -1419,15 +1443,14 @@ bool Boop::is_game_over( ) const{
 }
 
 bool Boop::is_legal(const std::string& move) const{ // verify that the player has these pieces
-    if (move.length() != 3){ // Invalid string length
+    if (next_mover() == HUMAN || computerMoveTurn == 1){
+        if (move.length() != 3){ // Invalid string length
         return 0;
     }
-
     char piece = toupper(move.substr(0, 1)[0]); // Sets piece to track the piece type
     if (piece != 'K' && piece != 'C'){ // Not a valid piece selection
         return 0;
     }
-
     if (next_mover() == HUMAN){ // Player 1 move
         if (piece == 'K' && player1_kittens == 0){ // No pieces to place
             return 0;
@@ -1444,20 +1467,53 @@ bool Boop::is_legal(const std::string& move) const{ // verify that the player ha
             return 0;
         }
     }
-
     int column = (toupper(move.substr(1, 1)[0])) - 49; // Sets column to track the requested column
     if (column < 0 || column > 5){
         return 0;
     }
-
     int row = (toupper(move.substr(2,1)[0])) - 65; // Sets row to track the requested row
     if (row < 0 || row > 5){
         return 0;
     }
-
     if (board[row][column].Access_State() != 0){ // Not an empty spot
         return 0;
     }
-
     return 1;
+    }
+    else if(computerRowOf3 == 1){
+        int column[3];
+        int row[3];
+        if (move.length() != 8){ // Bad length
+            return 0;
+        }
+        for (int i = 0; i < 3; i++){
+            column[i] = (toupper(move.substr(3 * i, 1)[0])) - 49; // Sets column to track the requested column
+            row[i] = (toupper(move.substr(3* i + 1,1)[0])) - 65; // Sets row to track the requested row
+            if (column[i] < 0 || column[i] > 5){ // Bad column
+                return 0;
+            }
+            if (row[i] < 0 || row[i] > 5){ // Bad column
+                return 0;
+            }
+        }
+        return 1;
+    }
+    else if(computer8 == 1){
+        if (move.length() != 2){ // Bad length
+            return 0;
+        }
+        int column = (toupper(move.substr(0, 1)[0])) - 49; // Sets column to track the requested column
+        if (column < 0 || column > 5){
+            return 0;
+        }
+        int row = (toupper(move.substr(1,1)[0])) - 65; // Sets row to track the requested row
+        if (row < 0 || row > 5){
+            return 0;
+        }
+        if (board[row][column].Access_State() != 2 || board[row][column].Access_State() != 4){ // Not an valid
+            return 0;
+        }
+        return 1;
+    }
+    return 0;
 }
