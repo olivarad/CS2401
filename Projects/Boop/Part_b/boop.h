@@ -41,6 +41,7 @@ namespace main_savitch_14
             Space board[6][6]; // 6X6 board of Space objects found in space.h
 
             bool game_over;
+            int winner;
 
             int player1_kittens;
             int player2_kittens;

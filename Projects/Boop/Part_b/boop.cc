@@ -43,7 +43,7 @@ void Boop::make_move(const std::string& move){ // Example input "k1F" kitten in 
     }
     boopPieces(piece, row, column);
     rowOf3(); // Cals rowOf3 function
-    //promotion();
+    all8();
     game::make_move(move);
 }
 
@@ -58,6 +58,12 @@ void Boop::rowOf3(){ // Check for victory then promote 3 kittens in a row
         for (int r = 1; r < 6; r++){ // Itterates through the rows
             if (consecutive == 3){
                 game_over = 1; // Sets the game to be over
+                if (previous == 3){
+                    winner = -1;
+                }
+                else{
+                    winner = 1;
+                }
                 return;
             }
             if (r == 6){
@@ -83,7 +89,12 @@ void Boop::rowOf3(){ // Check for victory then promote 3 kittens in a row
             }
             else{
                 previous = board[r][c].Access_State();
-                consecutive = 0;
+                if (previous == 3 || previous == 4){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
             }
         }
     }
@@ -97,6 +108,12 @@ void Boop::rowOf3(){ // Check for victory then promote 3 kittens in a row
         for (int c = 1; c < 6; c++){ // Itterates through the rows
             if (consecutive == 3){
                 game_over = 1; // Sets the game to be over
+                if (previous == 3){
+                    winner = -1;
+                }
+                else{
+                    winner = 1;
+                }
                 return;
             }
             if (r == 6){
@@ -122,13 +139,498 @@ void Boop::rowOf3(){ // Check for victory then promote 3 kittens in a row
             }
             else{
                 previous = board[r][c].Access_State();
-                consecutive = 0;
+                if (previous == 3 || previous == 4){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
             }
         }
     }
+    // Checking for cats
+    for (int R = 0; R <= 5; R++){
+        int consecutive = 0;
+        int previous = board[R][0].Access_State();
+        if (previous == 3 || previous == 4){
+            consecutive = 1;
+        }
+        int r = R + 1;
+        for (int c = 1; c <= (6 - R); c++){
+            if (consecutive == 3){
+                game_over = 1; // Sets the game to be over
+                if (previous == 3){
+                    winner = -1;
+                }
+                else{
+                    winner = 1;
+                }
+                return;
+            }
+            if (previous == 3){
+                previous = board[r][c].Access_State();
+                if (previous == 3){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                if (previous == 4){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 3 || previous == 4){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            r++;
+        }
+    }
+    //Checking for cats
+    for (int C = 0; C <= 5; C++){
+        int consecutive = 0;
+        int previous = board[0][C].Access_State();
+        if (previous == 3 || previous == 4){
+            consecutive = 1;
+        }
+        int c = C + 1;
+        for (int r = 1; r <= (6 - C); r++){
+            if (consecutive == 3){
+                game_over = 1; // Sets the game to be over
+                if (previous == 3){
+                    winner = -1;
+                }
+                else{
+                    winner = 1;
+                }
+                return;
+            }
+            if (previous == 3){
+                previous = board[r][c].Access_State();
+                if (previous == 3){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                if (previous == 4){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 3 || previous == 4){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            c++;
+        }
+    }        
+    //Checking for cats
+    for (int R = 0; R <= 5; R++){
+        int consecutive = 0;
+        int previous = board[R][5].Access_State();
+        if (previous == 3 || previous == 4){
+            consecutive = 1;
+        }
+        int r = R + 1;
+        for (int c = 4; c >= R - 1; c--){
+           if (consecutive == 3){
+                game_over = 1; // Sets the game to be over
+                if (previous == 3){
+                    winner = -1;
+                }
+                else{
+                    winner = 1;
+                }
+                return;
+            }
+            if (previous == 3){
+                previous = board[r][c].Access_State();
+                if (previous == 3){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                if (previous == 4){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 3 || previous == 4){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            r++; 
+        }
+    }
+    //Checking for cats
+    for (int C = 5; C >= 0; C--){
+        int consecutive = 0;
+        int previous = board[0][C].Access_State();
+        if (previous == 3 || previous == 4){
+            consecutive = 1;
+        }
+        int c = C - 1;
+        for (int r = 1; r <= C + 1; r++){
+           if (consecutive == 3){
+                game_over = 1; // Sets the game to be over
+                if (previous == 3){
+                    winner = -1;
+                }
+                else{
+                    winner = 1;
+                }
+                return;
+            }
+            if (previous == 3){
+                previous = board[r][c].Access_State();
+                if (previous == 3){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 4){
+                previous = board[r][c].Access_State();
+                if (previous == 4){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 3 || previous == 4){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            c--; 
+        }
+    }
 
-    
 
+    // Checking for kittens
+    for (int c = 0; c < 6; c++){ // Itterates through the columns
+        int consecutive = 0;
+        int previous = board[0][c].Access_State();
+        if (previous == 1 || previous == 2){
+            consecutive = 1;
+        }
+        for (int r = 1; r < 6; r++){ // Itterates through the rows
+            if (consecutive == 3){
+                promote();
+                return;
+            }
+            if (r == 6){
+                break;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 2){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+        }
+    }
+    // Checking for kittens
+    for (int r = 0; r < 6; r++){ // Itterates through the columns
+        int consecutive = 0;
+        int previous = board[r][0].Access_State();
+        if (previous == 1 || previous == 2){
+            consecutive = 1;
+        }
+        for (int c = 1; c < 6; c++){ // Itterates through the rows
+            if (consecutive == 3){
+                promote();
+                return;
+            }
+            if (r == 6){
+                break;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 2){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+        }
+    }
+    // Checking for kittens
+    for (int R = 0; R <= 5; R++){
+        int consecutive = 0;
+        int previous = board[R][0].Access_State();
+        if (previous == 1 || previous == 2){
+            consecutive = 1;
+        }
+        int r = R + 1;
+        for (int c = 1; c <= (6 - R); c++){
+            if (consecutive == 3){
+                promote();
+                return;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 2){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            r++;
+        }
+    }
+    //Checking for kittens
+    for (int C = 0; C <= 5; C++){
+        int consecutive = 0;
+        int previous = board[0][C].Access_State();
+        if (previous == 1 || previous == 2){
+            consecutive = 1;
+        }
+        int c = C + 1;
+        for (int r = 1; r <= (6 - C); r++){
+            if (consecutive == 3){
+                promote();
+                return;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 2){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            c++;
+        }
+    }        
+    //Checking for kittens
+    for (int R = 0; R <= 5; R++){
+        int consecutive = 0;
+        int previous = board[R][5].Access_State();
+        if (previous == 1 || previous == 2){
+            consecutive = 1;
+        }
+        int r = R + 1;
+        for (int c = 4; c >= R - 1; c--){
+           if (consecutive == 3){
+                promote();
+                return;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 2){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            r++; 
+        }
+    }
+    //Checking for kittens
+    for (int C = 5; C >= 0; C--){
+        int consecutive = 0;
+        int previous = board[0][C].Access_State();
+        if (previous == 1 || previous == 2){
+            consecutive = 1;
+        }
+        int c = C - 1;
+        for (int r = 1; r <= C + 1; r++){
+           if (consecutive == 3){
+                promote();
+                return;
+            }
+            if (previous == 1){
+                previous = board[r][c].Access_State();
+                if (previous == 1){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else if (previous == 2){
+                previous = board[r][c].Access_State();
+                if (previous == 2){
+                    consecutive++;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            else{
+                previous = board[r][c].Access_State();
+                if (previous == 1 || previous == 2){
+                    consecutive = 1;
+                }
+                else{
+                    consecutive = 0;
+                }
+            }
+            c--; 
+        }
+    }        
+}
+
+void Boop::all8(){ // Check for victory in all 8 cats on board or promoting all pieces on board
+    if ((player1_kittens == 0 && player1_cats == 0) || (player2_kittens == 0 && player2_cats == 0)){
+        int p1Cats = 0;
+        int p2Cats = 0;
+        for (int c = 0; c < 6; c++){ // Itterates through the columns
+            for (int r = 1; r < 6; r++){ // Itterates through the rows
+                if (p1Cats == 8){ // Player 1 has 8 cats on board
+                    game_over = 1;
+                    winner = -1;
+                }
+                else if (p2Cats == 8){
+                    game_over = 1;
+                    winner = 1;
+                }
+                if (board[r][c].Access_State() == 3){
+                    p1Cats++;
+                }
+                else if (board[r][c].Access_State() == 4){
+                    p2Cats++;
+                }
+            }
+        }
+    }
 }
 
 void Boop::boopPieces(const char piece, int row, int col){
@@ -722,40 +1224,6 @@ void Boop::boopPieces(const char piece, int row, int col){
     }
 }
 
-void Boop::promotion(){ // Promotes 3 consecutive player pieces or 8 matching kittens on a board to one cat
-    if ((player1_kittens == 0 && player1_cats == 0) || (player2_kittens == 0 && player2_cats == 0)){ // PLayer1 may promote 1 kitten to a cat by removing it from the board
-    string target_space = "";
-    string empty = "0";
-    display_status();
-        do {
-            cout << "Please provide a space (number, letter) with one of your kittens to be cleared in order to receive a cat: ";
-            cin >> target_space;
-            cout << endl;
-            cin.ignore();
-            if (target_space.length() == 2){
-                int column = (toupper(target_space.substr(0, 1)[0])) - 49; // Sets column to track the requested column
-                int row = (toupper(target_space.substr(1,1)[0])) - 65; // Sets row to track the requested row
-                if ((column > -1 && column < 6) && (row > -1 && row < 6)){// coordinates exsist on the board
-                    if (next_mover() == HUMAN){
-                        if (board[row][column].Access_State() == 1 || board[row][column].Access_State() == 3){
-                            board[row][column].Space_mutator(empty);
-                            player1_cats++;
-                            break;
-                        }
-                    }
-                    else if (next_mover() != HUMAN){
-                        if (board[row][column].Access_State() == 2 || board[row][column].Access_State() == 4){
-                            board[row][column].Space_mutator(empty);
-                            player2_cats++;
-                            break;
-                        }
-                    }
-                }
-            }
-        } while (true);
-    }
-}
-
 void Boop::promote(){
     display_status();
     bool loop = 1;
@@ -825,15 +1293,16 @@ void Boop::promote(){
             }
     }while (loop == 1);
     cin.ignore();
-    promotion();
+    rowOf3();
 }
 
 // Restart the game from the beginning:
 void Boop::restart(){
     game::restart();
+    winner = 0;
     game_over = 0;
     player1_kittens = player2_kittens = 8;
-    player1_cats = player2_cats = 8;
+    player1_cats = player2_cats = 0;
 }
 
 game* Boop::clone( ) const{
@@ -937,7 +1406,7 @@ void Boop::display_status( ) const{
 }
 
 int Boop::evaluate( ) const{ // -1 is player 1, 0 is tie, 1 is player 2
-    return 0; // Temp
+    return winner;
 }
 
 bool Boop::is_game_over( ) const{
