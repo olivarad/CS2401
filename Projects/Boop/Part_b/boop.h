@@ -17,7 +17,8 @@ namespace main_savitch_14
             void boopPieces(const char piece, int row, int col);
 
             void promotion(); // Promote 3 kittens to cats or 8 on a board to one cat
-            
+            void rowOf3(); // Check for victory then promote 3 kittens in a row
+            void all8(); // Check for victory in all 8 cats on board or promoting all pieces on board
             void promote();
 
             // Restart the game from the beginning:
@@ -46,7 +47,6 @@ namespace main_savitch_14
 
             int player1_cats;
             int player2_cats;
-
     };
 }
 
