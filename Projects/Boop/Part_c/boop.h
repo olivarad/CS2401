@@ -40,14 +40,16 @@ namespace main_savitch_14
         private:
             Space board[6][6]; // 6X6 board of Space objects found in space.h
 
+            int move_type; // 1 for place piece, 2 for remove row of 3, 3 for remove from 8
+
             bool game_over;
+            int winner;
 
             int player1_kittens;
             int player2_kittens;
 
             int player1_cats;
             int player2_cats;
-
     };
 }
 
